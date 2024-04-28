@@ -27,7 +27,7 @@ linux"><meta name="keywords" content="Blog,博客,Hexo"><meta content="width=dev
 <p>9.cp命令：拷贝命令</p>
 <p>10.rm命令：删除命令</p>
 <p>​    rm -f:就是删</p>
-<p>​    rm-r:删除目录</p>
+<p>​    rm -r:删除目录</p>
 <p>11.mkdir命令：创建文件夹</p>
 <p>12…&#x2F;返回上一级</p>
 <p>13.mv命令：移动文件（重命名）</p>
@@ -116,8 +116,29 @@ linux"><meta name="keywords" content="Blog,博客,Hexo"><meta content="width=dev
 <p>过滤POST的包</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http.request.method==POST</span><br></pre></td></tr></table></figure>
 
+<p>– – – – – – – – 我<del>是</del>分<del>割</del>线~＾＿－)≡★  – – – – – – – – </p>
+<p>（应用层、传输层、网络层、数据链路层、物理层）</p>
+<ul>
+<li>TCP是一个面向连接的、可靠的、基于字节流的传输层协议。</li>
+<li>UDP是一个面向无连接的传输层协议。</li>
+</ul>
+<p>具体来分析，和UDP相比，TCP有三大核心特性：</p>
+<p><em>1.面向连接。</em></p>
+<p>所谓的连接，指的是客户端和服务器的连接，在双方互相通信之前，TCP需要三次握手建立连接，而UDP没有相应建立连接的过程。</p>
+<img src="/2023/07/03/%E6%9A%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/tcp.png" style="zoom:60%;">
 
-
+<p>另外，从图中可以看出，SYN是需要消耗一个序列号的，下次发送对应的ACK序列号要加1，为什么呢？只需要记住一个规则：<u>凡是需要对端确认的，一定消耗TCP报文的序列号。</u></p>
+<p>SYN需要对端的确认，而ACK并不需要，因此SYN消耗一个序列号而ACK不需要。</p>
+<p><em>2.可靠性。</em></p>
+<p>TCP花了非常多的功夫保证连接的可靠，这个可靠性体现在哪些方面呢？一个是有状态，另一个是可控制。</p>
+<p>TCP会精准记录哪些数据发送了，哪些数据被对方接收了，哪些没有被接收到，而且保证数据包按序到达，不允许半点差错。这是有状态。</p>
+<p>当意识到丢包了或者网络环境不佳，TCP会根据具体情况调整自己的行为，控制自己的发送速度或者重发，一般来说都是发送端收不到接收端传来的ACK时，会认为是接收确认返回超时，会进行超时重传。这是可控制。</p>
+<p>相应的，UDP就是无状态，不可控的。</p>
+<p>另外，传输过程不区分服务端和客户端，因为TCP连接是全双工的，对两端来说采用一样的机制。</p>
+<p><em>3.面向字节流。</em></p>
+<p>UDP的数据传输是基于数据报的，这是因为仅仅只是继承了P层的特性，而TCP为了维护状态，将一个个P包变成了字节流。</p>
+<p>（几个小思考：为什么不是两次握手或者三次握手？</p>
+<p>– – – – – – – – 恭喜exp+1！要继续努力鸭(－ｏ⌒) ☆  – – – – – – – – </p>
 <p><strong>6.usb流量分析</strong></p>
 <p><strong>7.WiFi无线密码破解</strong></p>
 <p><strong>8.根据一组流量包了解黑客的具体行为</strong></p>
@@ -125,4 +146,4 @@ linux"><meta name="keywords" content="Blog,博客,Hexo"><meta content="width=dev
 <p><strong>题目中一般只考Modbus&#x2F;TCP类型</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1：读线圈</span><br><span class="line">2：读离散输入</span><br><span class="line">3：读保持</span><br><span class="line">4：读输入</span><br><span class="line">5：写单个线圈</span><br><span class="line">6：写单个保持</span><br><span class="line">15：写多个线圈</span><br><span class="line">16：写多个保持</span><br></pre></td></tr></table></figure>
 
-</p></div><div class="post-footer"><div class="tip">本文采用CC-BY-SA-3.0协议，转载请注明出处<br>Author: xinxin123qwq</div><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2023-07-03</span><a class="tag" href="/categories/misc/" title="misc">misc </a><i class="fa fa-tag"></i><a class="tag" href="/tags/一些证明自己还活着的记录/" title="一些证明自己还活着的记录">一些证明自己还活着的记录 </a><span class="leancloud_visitors"></span><span>About 1352 words, 4 min 30 sec  read</span></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="" onclick="javascript:join_favorite()" ref="sidebar"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/intent/tweet?text=I%20have%20found%20a%20great%20blog.%0A%0Astray_catcat%20%C2%B7%20%E6%9A%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%0Ahttp://example.com/2023/07/03/%E6%9A%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/%0A"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a class="btn" role="navigation" href="/2023/02/03/2023%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91%E5%88%9D%E8%B5%9B/" title="2023西湖论剑初赛">Next</a></li></ul></div><script src="/js/visitors.js"></script></div></div></div></div><script src="/js/darkLightToggle.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/add-bookmark.js"></script><script>(function(window){var INSIGHT_CONFIG={TRANSLATION:{POSTS:"Posts",PAGES:"Pages",CATEGORIES:"Categories",TAGS:"Tags",UNTITLED:"(Untitled)",},CONTENT_URL:"/content.json",};window.INSIGHT_CONFIG=INSIGHT_CONFIG})(window);</script><script src="/js/insight.js" defer></script><div class="searchbox ins-search"><div class="searchbox-container ins-search-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="Search..."><span class="searchbox-close"><a class="fa fa-times-circle" onclick="closeWindow();"></a></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"><p>Seraching...</p></div></div></div></div></body></html>
+</p></div><div class="post-footer"><div class="tip">本文采用CC-BY-SA-3.0协议，转载请注明出处<br>Author: xinxin123qwq</div><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2023-07-03</span><a class="tag" href="/categories/misc/" title="misc">misc </a><i class="fa fa-tag"></i><a class="tag" href="/tags/一些证明自己还活着的记录/" title="一些证明自己还活着的记录">一些证明自己还活着的记录 </a><span class="leancloud_visitors"></span><span>About2005words, 6min41secread</span></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="" onclick="javascript:join_favorite()" ref="sidebar"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/intent/tweet?text=Share%0A%0Astray_catcat%20%C2%B7%20%E6%9A%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%0Ahttp://example.com/2023/07/03/%E6%9A%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/%0A"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a class="btn" role="navigation" href="/2023/02/03/2023%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91%E5%88%9D%E8%B5%9B/" title="2023西湖论剑初赛">Próximo post</a></li></ul></div><script src="/js/visitors.js"></script></div></div></div></div><script src="/js/darkLightToggle.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/add-bookmark.js"></script><script>(function(window){var INSIGHT_CONFIG={TRANSLATION:{POSTS:"Posts",PAGES:"Pages",CATEGORIES:"Categories",TAGS:"Tags",UNTITLED:"(Untitled)",},CONTENT_URL:"/content.json",};window.INSIGHT_CONFIG=INSIGHT_CONFIG})(window);</script><script src="/js/insight.js" defer></script><div class="searchbox ins-search"><div class="searchbox-container ins-search-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="Search..."><span class="searchbox-close"><a class="fa fa-times-circle" onclick="closeWindow();"></a></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"><p>Seraching...</p></div></div></div></div></body></html>
