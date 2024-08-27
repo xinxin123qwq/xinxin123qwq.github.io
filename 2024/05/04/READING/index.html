@@ -1,0 +1,215 @@
+<!DOCTYPE html><html lang="zh-CN" id="theme-light-mode"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="小猫卷饼"><title>READING · 小猫卷饼</title><meta name="description" content="READING BY THE BEST FRIEND
+
+
+May first今天读的是一点关于python的小小tips~
+ctfer偏爱Python的最主要原因是因为其“轻便”
+①构造一定长度的输入
+12a = &amp;quot;1&amp;quot;*36print(a)
+
+②快速启动一个web服务（启动之后"><meta name="keywords" content="Blog,博客,Hexo"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="shortcut icon" type="image/x-icon" href="/images/xiaomao.jpg"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/insight.css"><link rel="stylesheet" href="/css/search.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><script src="/js/jquery.js"></script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="page-top animated fadeInDown"><div class="nav"><li> <a href="/">首页</a></li><li> <a href="/archives">归档</a></li><li> <a href="/tags">标签</a></li><li> <a href="/about">关于</a></li><li> <a href="/links">友链</a></li></div><div class="information"><div class="nav_right_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li><li><a class="fa fa-search" onclick="openWindow();"></a></li><li><a class="fa fa-sun-o" onclick="darkLightToggle();"></a></li></div><div class="avatar"><img src="/images/xiaomao.jpg"></div></div></div><div class="sidebar animated fadeInDown"><div class="sidebar-top"><div class="logo-title"><div class="title"><img src="/images/xiaomao.jpg" style="width:220px;" alt="favicon"><h3 title=""><a href="/">小猫卷饼</a></h3><div class="description"><p>大佬！请教我学技术！（抱住大腿</p></div></div><ul class="social-links"><li><a target="_blank" rel="noopener" href="https://github.com/xinxin123qwq"><i class="fa fa-github"></i></a></li><li><a href="mailto:xinxin123qwq@qq.com"><i class="fa fa-envelope"></i></a></li></ul></div></div><div class="footer"><div class="p"> <span> 全站CC-BY-SA-3.0 </span><i class="fa fa-star"></i><span> 小猫卷饼</span></div><div class="by_farbox"><span>Powered by </span><a href="https://hexo.io/zh-cn/" target="_blank">Hexo </a><span> & </span><a href="https://github.com/Lhcfl/hexo-theme-anatolo" target="_blank">Anatolo </a></div><div class="beian"></div></div></div><div class="main"><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>READING</a></h3></div><div class="post-content"><p><p>READING BY THE BEST FRIEND</p>
+<span id="more"></span>
+
+<h1 id="May-first"><a href="#May-first" class="headerlink" title="May first"></a>May first</h1><p>今天读的是一点关于python的小小tips~</p>
+<p>ctfer偏爱Python的最主要原因是因为其“轻便”</p>
+<p>①构造一定长度的输入</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;1&quot;</span>*<span class="number">36</span></span><br><span class="line"><span class="built_in">print</span>(a)</span><br></pre></td></tr></table></figure>
+
+<p>②快速启动一个web服务（启动之后要自己打开访问喔？应该）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python -m SimpleHTTPServer <span class="number">1989</span> <span class="comment">#python2</span></span><br><span class="line">python -m http.server <span class="number">1111</span> <span class="comment">#python3</span></span><br></pre></td></tr></table></figure>
+
+<p>可以远程访问并下载某些文件和目录，不想使用的时候，直接杀掉对应的进程终止提供服务，随用随启。</p>
+<p>http默认端口80，是网页服务器的访问端口，用于网页浏览，又称超文本传输协议。是上网冲浪使用最多的协议，主要用于在WWW（World Wide Web，万维网）服务上传输信息。</p>
+<p>当我们在浏览器中输入网址时，浏览器已经帮我们输入了协议，例如输入<a target="_blank" rel="noopener" href="http://baidu.com/">http://baidu.com</a></p>
+<p>其实就是访问<a href="http://baidu.com:80（有的网站使用的是8080端口">http://baidu.com:80（有的网站使用的是8080端口</a></p>
+<p>另，https默认端口443，python自带的HTTPServer端口是8000</p>
+<p>③数据进制转化</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">change</span>(<span class="params">s: <span class="built_in">str</span>, bit: <span class="built_in">int</span></span>) -&gt; <span class="built_in">bytes</span>:</span><br><span class="line">	ret = []	//创建一个空列表ret，用于存储处理后的结果</span><br><span class="line">	<span class="keyword">if</span> bit == <span class="number">16</span>:</span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(s)):	//遍历字符串s中的每个字符，<span class="built_in">range</span>(<span class="number">0</span>,<span class="built_in">len</span>(s))生成一个从<span class="number">0</span>到<span class="built_in">len</span>(s)-<span class="number">1</span>的整数序列</span><br><span class="line">			tmp = <span class="built_in">int</span>(s[i], bit)	//<span class="built_in">int</span>()函数将字符串转换为整数，第二个参数指定了进制</span><br><span class="line">			ret.append(tmp)		//将转换后的整数tmp添加到列表ret中</span><br><span class="line">	<span class="keyword">if</span> bit == <span class="number">8</span>:</span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(s), <span class="number">3</span>):	//每次迭代处理<span class="number">3</span>个字符，<span class="built_in">range</span>(<span class="number">0</span>,<span class="built_in">len</span>(s),<span class="number">3</span>)生成一个从<span class="number">0</span>到<span class="built_in">len</span>(s)-<span class="number">1</span>的整数序列，步长为<span class="number">3</span>，所生成的数列为<span class="number">0</span>，<span class="number">3</span>，<span class="number">6.</span>..</span><br><span class="line">			tmp = <span class="built_in">int</span>(s[i:i+<span class="number">3</span>], bit)	//将字符串s中的第i到第i+<span class="number">2</span>个字符（三个字符）转换为整数</span><br><span class="line">			ret.append(tmp)</span><br><span class="line">	<span class="keyword">if</span> bit == <span class="number">2</span>:</span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(s), <span class="number">7</span>):</span><br><span class="line">			tmp = <span class="built_in">int</span>(s[i:i+<span class="number">7</span>], bit)</span><br><span class="line">			ret.append(tmp)</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">bytes</span>(ret)	//将列表ret转换为字节串（<span class="built_in">bytes</span>）并返回</span><br></pre></td></tr></table></figure>
+
+<p>一个小扩展✧⁺⸜(●˙▾˙●)⸝⁺✧ </p>
+<p>Python列表是一种非常灵活和常用的数据结构，它允许存储不同类型的元素，并且提供了多种操作列表的方法。</p>
+<p>创建列表的基本语法是将逗号分隔的元素放入方括号中，例如：</p>
+<p>​	list1 &#x3D; 创建一个包含整数的列表，</p>
+<p>​	list2 &#x3D; [“张三”, “李四”, “王五”]创建一个包含字符串的列表。</p>
+<p>可以通过索引访问和修改列表中的元素，索引从0开始，可以使用负索引从列表末尾访问元素，例如，lists[1]访问第二个元素，lists[-1]访问最后一个元素。列表支持多种操作，如追加元素append()、扩展列表extend()、插入元素insert()、<u>删除元素</u>等。</p>
+<ul>
+<li>可以使用del通过锁定下标直接删除列表中的元素</li>
+<li>通过pop锁定下标取出元素，并赋值给变量，这样就删除了想要删除的元素，但是输出列表时，会将取出的元素输出在修改后的列表后</li>
+<li>通过remove锁定元素内容来删除列表元素，而且如果列表中有重复元素，只能删除前面的元素，后面的还会被保留</li>
+<li>如果嫌一个一个删太麻烦，可以使用clear指令直接清空列表（查看结果即输出清空的列表时，控制台会输出[]</li>
+</ul>
+<p>示例如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">del</span> mylist[<span class="number">1</span>]	//<span class="number">1</span>为列表元素所对应的下标</span><br><span class="line">newlist = mylist.pop(<span class="number">1</span>)</span><br><span class="line">mylist.remove(<span class="number">123</span>)	//<span class="number">123</span>为列表元素的元素内容</span><br><span class="line">mylist.clear()</span><br><span class="line"><span class="built_in">print</span>(mylist)	//输出列表</span><br></pre></td></tr></table></figure>
+
+<p>此外，Python的列表推导式和生成器提供了一种简洁的方法来创建和操作列表，例如，生成一个包含平方数的列表可以使用square_list &#x3D; [x**2 for x in range(n)]。也可以使用循环：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">square_list = []</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(n):	//<span class="built_in">range</span>(start,stop,step)，左含右不含，如果没有start的话默认从<span class="number">0</span>开始计数</span><br><span class="line">    square_list.append(x**<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<p>④数据类型间的良好转化（主要得益于大小端转换函数</p>
+<p>那么问题来了！<strong>什么是大小端？</strong></p>
+<p>摘自某位大牛的blog：在计算机科学中，大小端(Endianness)是用于描述存储多字节数据类型（如整数、浮点数）的字节顺序的方式。字节序是指 按照字节存储的顺序。</p>
+<p>在计算机中，一个字节通常由8个二进制位组成。对于一个多字节的数据类型，比如16位整数，可以有两种不同的存储方式：大端序列(Big Endian)和小端序列(Little Endian)。</p>
+<ul>
+<li>大端序列：数据的高位字节存诸在内存的低地址处，低位字节存储在内存的高地址处。</li>
+<li>小端序列：数据的低位字节存诸在内存的低地址处，高位字节存储在内存的高地址处。</li>
+</ul>
+<p>举个例子来说明，假设我们有一个16位整数的值为0x1234（一个十六进制数），它可以以大端序列和小端序列两种方式存储：</p>
+<ul>
+<li>大端序列：低地址处存储高位字节，高地址处存储低位字节。在内存中的表示为0x120x34。</li>
+<li>小端序列：低位字节存储在低地址处，高位字节存储在高地址处。在内存中的表示为0x340x12。</li>
+</ul>
+<p><strong>没来得及扩展和整理，先直接copy一下大佬的笔记：</strong></p>
+<p>大小端转换在python里有轻便的函数int.from_bytes(src,’little’)  or int.frombytes(src,’big’)。转回去也有int.to_bytes(‘little’,bit_length)。这里的bit_length是指转化的bytes长度。而后，str可以靠encode编码成bytes，bytes可以decode为str。一言以蔽之，整数、字节数组、字符串这三个基础变量在python里是可以达到轻易且低代码实现互转。这会避免出现不必要的麻烦和思考负担。</p>
+<h1 id="May-third"><a href="#May-third" class="headerlink" title="May third"></a>May third</h1><p>pythonの数组构造</p>
+<p>可以使用列表（List）、NumPy库等创建数组（以下举例里所创造的列表都是[1,2,3,4,5]</p>
+<p>1、List</p>
+<p>列表中的元素可以是任意类型，包括整数、浮点数、字符串等</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">my_list = []	//创建一个空列表</span><br><span class="line">my_list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]	//使用字面量创建列表</span><br><span class="line">my_list = <span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">1</span>, <span class="number">6</span>))		//使用<span class="built_in">range</span>()函数创建数字列表</span><br><span class="line">my_list = [i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">6</span>)]		//使用列表推导式创建列表</span><br></pre></td></tr></table></figure>
+
+<p>2、NumPy</p>
+<p>NumPy是Python中一个非常强大的数学库，提供了许多用于处理数组的功能，要使用NumPy库，首先需要安装并导入它：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install numpy</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+
+<p>使用NumPy创建数组：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">my_array = np.array([])		//创建一个空数组</span><br><span class="line">my_array = np.array([1, 2, 3, 4, 5])	//使用字面量创建数组</span><br><span class="line">my_array = np.array(range(1, 6))	//使用range()函数创建数字数组</span><br><span class="line">my_array = np.array([1, 2, 3, 4, 5])	//使用列表创建数组</span><br></pre></td></tr></table></figure>
+
+<p>3、使用列表转换为NumPy数组</p>
+<p>如果你已经有一个Python列表，可以将其转换为NumPy数组：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">my_list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">my_array = np.array(my_list)</span><br></pre></td></tr></table></figure>
+
+<p>4、使用NumPy的arange()和linspace()函数创建数组</p>
+<p>NumPy提供了arange()和linspace()函数，用于创建具有特定范围和步长的数组：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">my_array = np.arange(start=<span class="number">1</span>, stop=<span class="number">6</span>, step=<span class="number">1</span>)	//使用arange()函数创建数组</span><br><span class="line">my_array = np.linspace(start=<span class="number">1</span>, stop=<span class="number">6</span>, num=<span class="number">5</span>)	//使用linspace()函数创建数组</span><br></pre></td></tr></table></figure>
+
+<p>一个小思考：怎么在python中创建二维数组呢？</p>
+<p>答：可以使用列表嵌套的方式创建二维数组，或者使用NumPy库的reshape()函数将一维数组转换为二维数组：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">my_array_2d = [[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]]		//使用列表创建二维数组</span><br><span class="line">my_array = np.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>])	//使用NumPy创建二维数组</span><br><span class="line">my_array_2d = my_array.reshape(<span class="number">3</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<p>回归READING，一般的数组初始化是：</p>
+<p>① 默认0</p>
+<p>② 定义时赋初值</p>
+<p>③ 循环赋初值</p>
+<p>④ copy</p>
+<p>python 在这四种初始化之上，还支持 ②③ 结合，即：在定义时用循环赋初值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line">r = random.Random()	<span class="comment">#初始化随机数类</span></span><br><span class="line">r.seed(<span class="number">0</span>)	<span class="comment">#固定随机种子，这样能输出固定的序列，不必须。</span></span><br><span class="line">arr = [<span class="number">0</span>]*<span class="number">256</span>	<span class="comment">#[0]*256会将256个[0]拼接成[0,0,0,...]</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">256</span>):</span><br><span class="line">	arr[i] = r.randint(<span class="number">0</span>, i)	<span class="comment"># 使用randint生成随机int，该函数好在可以约束随机数的范围。</span></span><br><span class="line"><span class="built_in">print</span>(arr[<span class="number">0</span>:<span class="number">10</span>])	<span class="comment">#注意，这里的0:10实际会去arr[0] ~ arr[9]，和循环相仿。</span></span><br></pre></td></tr></table></figure>
+
+<p>如果用 <code>lambda</code>（lambda 表达式，又称匿名函数，常用来表示内部仅包含 1 行表达式的函数。）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line">r = random.Random()</span><br><span class="line">r.seed(<span class="number">0</span>)</span><br><span class="line">arr = [r.randint(<span class="number">0</span>, i) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">256</span>)]	//<span class="keyword">for</span>的左侧是希望赋的值，右侧看作这个值的增量，其中左侧不必须使用i。</span><br><span class="line"><span class="built_in">print</span>(arr[<span class="number">0</span>:<span class="number">10</span>])</span><br></pre></td></tr></table></figure>
+
+<p><strong>（可以尝试一下运行出来是什么结果）</strong></p>
+<p>a tip about seed：</p>
+<p><code>random.seed(0)</code>：0是对应的随机数的种子，第二个 random.seed(0)后面的随机数与前一个随机数种子之间的随机数相同（随机数数量一样多的情况下）；否则，第二个随机数数量多了，就只能部分和第一个与第二个随机数之间的随机数相同，如果少，则第二个随机种子后面随机数数量n与第一个随机种子后的t个随机数中前n个相同（t&gt;n）；具体可以自己运行输出一下，如果想偷懒的话可以直接通过链接（<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43949943/article/details/89183899%EF%BC%89%E5%8F%82%E8%80%83%E4%B8%80%E4%B8%8B%E8%BF%99%E4%B8%AA%E5%8D%9A%E4%B8%BB%E7%9A%84%E5%8D%9A%E5%AE%A2">https://blog.csdn.net/weixin_43949943/article/details/89183899）参考一下这个博主的博客</a>~</p>
+<p>一句话总结：只要seed的值一样，后续生成的随机数都一样。</p>
+<p>一个小思考：为什么生成的随机数可以做到固定呢？</p>
+<p>为了保证其后面生成过的随机数都是固定的，任何一个计算机当中的随机数都是通过<u>线性同余随机数发生器</u>生成，任意给定随机一个种子值s可进行以下迭代生成新的随机数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">r0 = s * A + B	//A,B为固定值</span><br><span class="line">r1 = r0 * A + B</span><br><span class="line">r2 = r1 * A + B</span><br><span class="line">r3 = r2 * A + B</span><br><span class="line">r4 = r3 * A + B</span><br></pre></td></tr></table></figure>
+
+<p>不断重复这个过程最后得到n个数。本质就是通过线性同余不断得到新的随机数。而种子值真正的确定了我们所得的序列是什么。</p>
+<p>– – – – – – – – 我是一个用于来带math小知识的分割线~ – – – – – – – – </p>
+<p>线性同余法是产生均匀分布随机数的方法之一，包括混合同余法和乘同余法，是目前应用广泛的伪随机数生成算法，其基本思想是通过对前一个数进行线性运算并取模从而得到下一个数，递归公式为：X[n+1]&#x3D;(a*X[n]+c) mod m，其中a称为乘数，c称为增量，m称为模数。</p>
+<p>线性同余法的最大周期是m，但一般情况下会小于m。</p>
+<p>要使周期达到最大，应该满足以下条件：c和m互质；m的所有质因子的积能整除a-1；若m是4的倍数，则a-1也是；a，c，x[0]（初值）都比m小；a和c是正整数。</p>
+<p>线性同余法速度快，效率高，如果对乘数和模数进行适当的选择，可以满足用于随机数产生器的3种准则：产生的随机数应该在重复之前产生出0到m之间的所有数；产生的序列应该看起来是随机的；这个函数应该用32bit算术高效实现。</p>
+<p>– – – – – – – – ending!!!∑(ﾟДﾟノ)ノ – – – – – – – – </p>
+<h1 id="May-4th"><a href="#May-4th" class="headerlink" title="May 4th"></a>May 4th</h1><p>使用python进行数学求解——多项表达式、z3、约束求解</p>
+<p>some thinkings:</p>
+<p>①假设现在有一个方程 x + 2 &#x3D; 3，如何用编程求解？</p>
+<p>②如何求解 x + 2y &#x3D; 5 、y + 2x &#x3D; 4。</p>
+<p>③如果是更多元的方程呢？</p>
+<h1 id="May-11th"><a href="#May-11th" class="headerlink" title="May 11th"></a>May 11th</h1><p>About Crypto and 模运算</p>
+<p>模运算又称取模、取余（数），其常见符号为mod、%，这个运算有一些很有趣的特点，让其和密码学的非对称加密强相关。</p>
+<p>– – – – – – – – 举例o(▼皿▼メ;)o – – – – – – – – </p>
+<p>以一个很著名和典型的非对称加密算法为例：</p>
+<p>先取两素数（也称质数）p、q，然后我们可以得到</p>
+<p>n&#x3D;p*q</p>
+<p>还能得到 f(n)&#x3D;(p-1)*(q-1)</p>
+<p>走至此步的时候我们可以引申出一个较小数e，e与 f(n) 互质，即它们的最大公约数为1（此处的e是公钥之一，e可以不止一个）</p>
+<p>到此，我们可以得到<code>公钥 (n,e)</code></p>
+<p>然后可以根据d*e%f(n)&#x3D;1得到私钥之一のd</p>
+<p>到此可得<code>私钥为 (n,d)</code></p>
+<p>产生密文c&#x3D;m^e%n</p>
+<p>解出明文m&#x3D;c^d%n</p>
+<p>– – – – – – – – 举例结束ヽ(&#96;Д´)ﾉ – – – – – – – – </p>
+<p>相比其他算术运算来说，模运算会造成更多的<u>信息丢失</u>。（这也是为什么那么多非对称加密算法那么偏爱模运算的主要原因之一）</p>
+<p>一个例子by the best firend：现在我们有一个模数100，我们将它去模被除数1、被除数2……因为1、2小于100，所以1%100，2%100时商是0，余数就是模数本身。但一旦被除数大于模数，例如出现101%100，商就从0变成1了，余数为1（与1%100得到的结果即余数相同）。在此运算中，101的100是不是被舍去，只留下了余数1。</p>
+<p>如果我们知道加数、减数、除数和乘法因子时，我们可以从结果还原做算术运算的那个数。而对于模运算来说，如果没有商，我们只知道模数和余数，我们没有办法还原出被模的数。</p>
+<p>在信息丢失的基础上，以刚刚的模数100为例，如果被模数++，我们可以得到：</p>
+<p>0 % 100 &#x3D; 0</p>
+<p>1% 100 &#x3D; 1</p>
+<p>…</p>
+<p>100 % 100 &#x3D; 0</p>
+<p>101 % 100 &#x3D; 1</p>
+<p>在此刻，我们所得到的余数，跟开始的时候相同，达到了某种“余数从0-100”の循环。（拥有高度信息丢失特点的模运算，其值居然会达成某种循环。）</p>
+<p>Ending by the best firend(〃’▽’〃)：我们可以得到的结论有①信息丢失—&gt;无法逆向。②循环—&gt;不同的值拥有相同的余数。这就是许多非对称加密，如，rsa的一个基础，颠颠倒倒，无法逆向的运算，但最后从密文得到了和明文相同的值。</p>
+<h1 id="May-14th"><a href="#May-14th" class="headerlink" title="May 14th"></a>May 14th</h1><p>About RE——“虚拟机”保护</p>
+<p>虚拟机，又称Virtual Machine不单指Vmware这种高度成熟完备的模拟。按照百度百科的定义来说，虚拟机指通过软件模拟的、具有完整硬件系统功能的、运行在一个完全隔离环境中的完整计算机系统。若以Vmware为虚拟机技术的顶端，从上往下看，依次是：</p>
+<p>完备系统模拟——Vmware、VirtualBox、安卓模拟器</p>
+<ul>
+<li>成熟的轻量模拟——Docker、容器</li>
+<li>基础的模拟框架——Qemu、Qiling</li>
+<li>CPU级别的模拟（模拟执行）——unicorn、硬件仿真</li>
+<li>自定义指令的模拟——VMP（Virtual Machine Protect）虚拟机保护与虚拟机壳（同样也称VMP）</li>
+</ul>
+<h1 id="May-18th"><a href="#May-18th" class="headerlink" title="May 18th"></a>May 18th</h1><p>应急响应之钓鱼研判的冰山一角</p>
+<p>所谓钓鱼研判，跟钓鱼佬钓鱼一样，需要用精致诱人的鱼饵去吸引【小鱼&lt;・)))&gt;&lt;&lt;】咬钩。当我们作为【小鱼&lt;・)))&gt;&lt;&lt;】的角色登场时，我们需要避开坏人的钩子，从对方抛出的鱼饵中找到隐藏的线索，去分析对方的身份，并采取一定的措施去防范和保护自己的目标主机。</p>
+<p>常见的几个钓鱼的基本隐藏途径：<u>文件属性隐藏、后缀隐藏、命令隐藏、自解压、（白夹黑）</u>。</p>
+<h5 id="文件属性隐藏"><a href="#文件属性隐藏" class="headerlink" title="文件属性隐藏"></a>文件属性隐藏</h5><p>若不进行额外设置，windows默认是看不到隐藏文件的，我们所说的额外设置指的是win11、win10系统可以在资源管理器顶部的菜单栏中的“查看”菜单栏中选择是否显示隐藏的文件。</p>
+<p>我们可以右键目标文件，进入文件属性显示窗口中选择是否隐藏该文件。如果我们同时打开了显示隐藏文件的选项，那么被隐藏的文件会以透明的图标显示。（非常简单易懂，小白如我实操一下也能明白，所以不贴图了）</p>
+<h5 id="后缀隐藏"><a href="#后缀隐藏" class="headerlink" title="后缀隐藏"></a>后缀隐藏</h5><p>同上，如若没有额外设置显示文件扩展名，文件真实的扩展名在windows系统中是可以被隐藏下来的。（本小白在学习编程语言的时候没少受这个后缀名毒打）</p>
+<p>同样在查看界面，可以设置查看文件拓展名。</p>
+<p>– – – – – – – – 一个无关紧要的扩展o(▼皿▼メ;)o – – – – – – – – </p>
+<p>因本人深受学校机房电脑のwin不知道几の陈年旧脑迫害，私心想再添加一则小tip。</p>
+<p>①Windows 10系统显示文件后缀（但我实际操作下来其实跟win11差不多，都是在上方的菜单栏直接进行操作选择）</p>
+<ul>
+<li>打开资源管理器，点击【查看】，然后选择【选项】；</li>
+<li>在弹出的文件夹选项窗口中，点击上方的【查看】；</li>
+<li>在【高级设置】列表中，找到【隐藏已知文件类型的扩展名】选项，并取消其勾选状态，点击【确定】按钮保存更改。</li>
+</ul>
+<p>②Windows 7系统显示文件后缀</p>
+<ul>
+<li>打开资源管理器，点击左上角的【组织】，在下拉菜单中选择【文件夹和搜索选项】；</li>
+<li>在打开的文件夹选项设置窗口中，点击【查看】选项卡；</li>
+<li>在查看界面中，取消勾选【隐藏已知文件类型的扩展名】，然后点击【确定】按钮。</li>
+</ul>
+<p>③Mac系统显示文件后缀</p>
+<ul>
+<li>打开Finder，这是Mac电脑上的默认文件浏览器；</li>
+<li>在菜单栏中，点击【访达】选项，然后选择【设置】；</li>
+<li>在设置窗口中，点击【高级】选项卡；</li>
+<li>在高级选项卡中，找到【在文件名后显示所有的扩展名】复选框，并确保它被选中。</li>
+</ul>
+<p>关闭偏好设置窗口后，文件的后缀名就会显示在文件名后面。</p>
+<p>同样的，显示隐藏文件的操作也差不多同理，在同样的显示列表里找一下就好了，这里就不再作扩展。</p>
+<p>– – – – – – – – 下班！（bushi）o(▼皿▼メ;)o – – – – – – – – </p>
+<h5 id="命令隐藏"><a href="#命令隐藏" class="headerlink" title="命令隐藏"></a>命令隐藏</h5><p>前情提要：隐藏文件分为普通隐藏文件和系统隐藏文件。系统隐藏文件无法在显示普通隐藏文件时显示。</p>
+<p>命令隐藏会导致——就算勾选了查看隐藏文件，也看不到隐藏文件。这时只能通过其它信息去侧面判断，具体情况具体分析。</p>
+<p>如果判断出来可能有隐藏的文件，可以尝试在隐藏的目录下使用这个命令attrib -h -s * &#x2F;s &#x2F;d 恢复。（大佬说后续会有该情况的实践，埋个种子在这里꒰ᐢ⸝⸝•༝•⸝⸝ᐢ꒱）（这是什么？种子，拔掉get！٩( ‘ω’ )و </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">attrib +h +s * /s /d	//递归隐藏文件</span><br><span class="line">attrib -h -s * /s /d	//显示用命令隐藏的文件</span><br><span class="line">attrib /?	//查看显示该命令相关的帮助</span><br></pre></td></tr></table></figure>
+
+<p>小tips：比对文件解压时所查看的大小和解压后的大小。仔细查看文件属性。</p>
+<h5 id="自解压"><a href="#自解压" class="headerlink" title="自解压"></a>自解压</h5><p>（大佬说：自解压其实不太像上面的“隐藏文件”。更应该说是隐藏行为。有一些压缩软件可以在压缩时选择”自解压”，或者更准确的来说，是选择”解压自运行”选项。</p>
+<p>那么问题来了！“解压自运行”有什么用！答：该选项会在我们解压文件时，自动启动压缩包里的恶意文件——所以查看压缩包没问题，解压稍小心些。（还好我只是臭鱼烂虾没人想要我电脑里的数据，后怕.jpg</p>
+<h5 id="白加黑（白夹黑）"><a href="#白加黑（白夹黑）" class="headerlink" title="白加黑（白夹黑）"></a>白加黑（白夹黑）</h5><p>白加黑也是一种”隐藏行为”。</p>
+<p>大佬说：比如，钓鱼文件做成了一个“谷歌浏览器安装包”的模样。这个安装包是钓鱼者直接从谷歌浏览器官网下下来的，非常安全，安装包甚至有谷歌的数字签名，挑不出毛病。那有毛病的是什么呢？有的时候，安装包并不只有一个文件。比如安装包本身是一个“启动器”，或者说“加载器”。这个加载器安装包会加载其它的安装组件，而问题就出在这里。攻击者可能会篡改这些被加载的安装组件，从而导致了—&gt;白色的、安全的安装包加载了一个黑色的、恶意的组件，这就是白加黑。（虽然我个人觉得称为白夹黑会更贴切，但是无伤大雅la。</p>
+<h1 id="May-21th"><a href="#May-21th" class="headerlink" title="May 21th"></a>May 21th</h1><p>在python中使用c语言</p>
+<p>首先我们要复习一个知识点：</p>
+<p>在c语言中，<code>unsigned</code>意味着无符号，它用于声明无符号整数类型。这表示该整数类型只能存储非负数，即0和正整数。与有符号<code>signed</code>整数相比，无符号整数不需要一个位来存储正负信息，因此它们可以存储更大的数值范围。例如，一个16位的unsigned int可以存储的数值范围是0到65535（2^16），而一个16位的signed int可以存储的数值范围是-32768到32767。</p>
+<p>无符号类型和有符号类型的区别在于无符号类型能保存2倍于有符号类型的正整数数据。在计算机中，整数是以补码形式存放的，如果是有符号数，最高位如果是1，则表示负数；如果是无符号数，则都解释为正数。（使用unsigned类型修饰符可以避免负数和正数混淆的问题，并提供更大的数值范围。但是，需要注意的是，在进行算术运算时，unsigned类型会自动进行模运算，因此需要特别注意溢出的问题。如果一个unsigned类型的变量的值超过了其数据类型的最大值，它将会回到0重新开始计数，这种现象称为<u>“unsigned溢出”</u>。）</p>
+<p>在C语言中整型常量的数据类型默认为int，所以unsigned int a &#x3D; -1中，-1的类型依旧是int类型。实际上是有一个隐式转换，即将int类型转成unsigned int类型。 这个转换的意义不大，因为没有超出unsigned类型的表示范围，所以a的机器码依然是-1的机器码。</p>
+<p>如果我们想输出a，使用printf输出函数的控制字符仍然是%d（一个格式占位符，输出一个十进制整数），即输出有符号数，所以结果是-1；如果要输出无符号整数，需使用:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%u\n&quot;</span>, a);</span><br></pre></td></tr></table></figure>
+
+<p>（在C语言中，%x是一个格式说明符，用于以十六进制的形式输出整数值。</p>
+<p>现在，我们有这样一个赋值语句：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unsigned int a = -1</span><br></pre></td></tr></table></figure>
+
+<p>我们输出其十六进制，在c语言中我们得到的结果是FFFFFFFF，在python中我们得到的结果是-0x1。</p>
+<h1 id="June-21th"><a href="#June-21th" class="headerlink" title="June 21th"></a>June 21th</h1><p>command line，powershell，windows terminal虽然相似但并不是一个东西，可以理解为版本号从左往右递增。（高版本兼容和集成低版本）</p>
+<p>可以安装powertab来加强powershell环境下的命令补全，显示可匹配的命令列表。但由于这个工具已经不在维护了，所支持的系统版本过低，目前应该是无法使用了。</p>
+<img src="2024-05-04_READING/6_21_1.jpg" style="zoom: 80%;" />
+
+<p>通配符&amp;管道符是Linux环境下的命令，但是随着powershell的推出，我们也可以在windows中通过powershell使用通配符&amp;管道符。那么问题来了，什么是通配符&amp;管道符？</p>
+<p>简答：在我们使用Linux的过程中，用到过诸如“?”、“*”、“%”、“|”等等的符号，这些符号在Linux的命令中是一种具有特殊功能的符号，被称为通配符或管道符。</p>
+<p>①通配符是一种特殊语句，用来模糊搜索文件。当查找文件夹时，可以使用它来代替一个或多个真正字符；当不知道真正字符或者懒得输入完整名字时，常常使用通配符代替一个或多个真正的字符。</p>
+<p>②管道命令符的作用是把前一个命令原本要输出到屏幕的标注正常数据当做是后一个命令的标准输入。<u>一条命令中可以有多个管道符，只要前面的命令有输出结果，管道符后面的命令即可再执行。</u></p>
+</p></div><div class="post-footer"><div class="tip">本文采用CC-BY-SA-3.0协议，转载请注明出处<br>作者: 小猫卷饼</div><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2024-05-04</span><i class="fa fa-tag"></i><a class="tag" href="/tags/一些证明自己还活着的记录/" title="一些证明自己还活着的记录">一些证明自己还活着的记录 </a><span class="leancloud_visitors"></span><span>大约6881个字, 22分钟56秒读完</span></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="" onclick="javascript:join_favorite()" ref="sidebar"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/intent/tweet?text=%E5%88%86%E4%BA%AB%E6%96%87%E7%AB%A0%EF%BC%9A%0A%0A%E5%B0%8F%E7%8C%AB%E5%8D%B7%E9%A5%BC%20%C2%B7%20READING%0Ahttp://example.com/2024/05/04/READING/%0A"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/2024/05/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%B0%8F%E7%99%BD%E5%A4%A7%E6%88%98Linux%E6%96%87%E4%BB%B6%E9%94%81/" title="计算机小白大战Linux文件锁">上一篇</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/2024/04/30/%E4%B8%80%E7%AF%87%E5%85%B3%E4%BA%8E%E2%80%9C%E5%86%85%E5%AD%98%E5%9E%83%E5%9C%BE%E5%9C%BA%E2%80%9D%E3%81%AE%E5%B0%8F%E6%80%9D%E8%80%83/" title="一篇关于“内存垃圾场”の小思考">下一篇</a></li></ul></div><script src="/js/visitors.js"></script></div></div></div></div><script src="/js/darkLightToggle.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/add-bookmark.js"></script><script>(function(window){var INSIGHT_CONFIG={TRANSLATION:{POSTS:"文章",PAGES:"页面",CATEGORIES:"分类",TAGS:"标签",UNTITLED:"(无标题)",},CONTENT_URL:"/content.json",};window.INSIGHT_CONFIG=INSIGHT_CONFIG})(window);</script><script src="/js/insight.js" defer></script><div class="searchbox ins-search"><div class="searchbox-container ins-search-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="想要查找什么..."><span class="searchbox-close"><a class="fa fa-times-circle" onclick="closeWindow();"></a></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"><p>Seraching...</p></div></div></div></div></body></html>

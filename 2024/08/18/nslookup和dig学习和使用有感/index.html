@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="zh-CN" id="theme-light-mode"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="小猫卷饼"><title>nslookup和dig学习和使用有感 · 小猫卷饼</title><meta name="description" content="如题。
+
+
+要想愉快的使用工具，就要先熟练掌握基础知识。
+域名结构：主机名.次级域名.域名.根域名（host.sld.tld.root）
+Windows系统可以通过 ipconfig /displaydns 命令查看DNS缓存。
+ipconfig的使用参数如下：
+12345678910111213/"><meta name="keywords" content="Blog,博客,Hexo"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="shortcut icon" type="image/x-icon" href="/images/xiaomao.jpg"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/insight.css"><link rel="stylesheet" href="/css/search.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><script src="/js/jquery.js"></script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="page-top animated fadeInDown"><div class="nav"><li> <a href="/">首页</a></li><li> <a href="/archives">归档</a></li><li> <a href="/tags">标签</a></li><li> <a href="/about">关于</a></li><li> <a href="/links">友链</a></li></div><div class="information"><div class="nav_right_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li><li><a class="fa fa-search" onclick="openWindow();"></a></li><li><a class="fa fa-sun-o" onclick="darkLightToggle();"></a></li></div><div class="avatar"><img src="/images/xiaomao.jpg"></div></div></div><div class="sidebar animated fadeInDown"><div class="sidebar-top"><div class="logo-title"><div class="title"><img src="/images/xiaomao.jpg" style="width:220px;" alt="favicon"><h3 title=""><a href="/">小猫卷饼</a></h3><div class="description"><p>大佬！请教我学技术！（抱住大腿</p></div></div><ul class="social-links"><li><a target="_blank" rel="noopener" href="https://github.com/xinxin123qwq"><i class="fa fa-github"></i></a></li><li><a href="mailto:xinxin123qwq@qq.com"><i class="fa fa-envelope"></i></a></li></ul></div></div><div class="footer"><div class="p"> <span> 全站CC-BY-SA-3.0 </span><i class="fa fa-star"></i><span> 小猫卷饼</span></div><div class="by_farbox"><span>Powered by </span><a href="https://hexo.io/zh-cn/" target="_blank">Hexo </a><span> & </span><a href="https://github.com/Lhcfl/hexo-theme-anatolo" target="_blank">Anatolo </a></div><div class="beian"></div></div></div><div class="main"><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>nslookup和dig学习和使用有感</a></h3></div><div class="post-content"><p><p>如题。</p>
+<span id="more"></span>
+
+<p>要想愉快的使用工具，就要先熟练掌握基础知识。</p>
+<p>域名结构：主机名.次级域名.域名.根域名（host.sld.tld.root）</p>
+<p>Windows系统可以通过 <code>ipconfig /displaydns</code> 命令查看DNS缓存。</p>
+<p>ipconfig的使用参数如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/?：显示此帮助消息</span><br><span class="line">/all：显示完整配置信息。</span><br><span class="line">/release：释放指定适配器的 IPv4 地址。</span><br><span class="line">/release6：释放指定适配器的 IPv6 地址。</span><br><span class="line">/renew： 更新指定适配器的 IPv4 地址。</span><br><span class="line">/renew6：更新指定适配器的 IPv6 地址。</span><br><span class="line">/flushdns：清除 DNS 解析程序缓存。</span><br><span class="line">/registerdns：刷新所有 DHCP 租约并重新注册 DNS 名称</span><br><span class="line">/displaydns：显示 DNS 解析程序缓存的内容。</span><br><span class="line">/showclassid：显示适配器的所有允许的 DHCP 类 ID。</span><br><span class="line">/setclassid：修改 DHCP 类 ID。</span><br><span class="line">/showclassid6：显示适配器允许的所有 IPv6 DHCP 类 ID。</span><br><span class="line">/setclassid6：修改 IPv6 DHCP 类 ID。</span><br></pre></td></tr></table></figure>
+
+<p>DNS解析过程：</p>
+<p>​	本地解析—&gt;</p>
+<p>​	浏览器缓存—&gt;</p>
+<p>​	（操作）系统缓存—&gt;</p>
+<p>​	路由器缓存—&gt;</p>
+<p>​	ISP（互联网服务提供商） DNS服务器—&gt;</p>
+<p>​	根域名服务器（在上一级里没找到的话，就由上一级，即ISP DNS服务器发送请求）—&gt;</p>
+<p>​	顶级域名服务器（TLD）（ISP DNS收到根域名服务器发送的TLD地址后向该地址发送请求）—&gt;</p>
+<p>​	权威DNS服务器（ISP DNS收到顶级域名服务器发送的权威DNS服务器地址后向该地址发送请求）—&gt;</p>
+<p>​	获取IP地址（由上一级返回给ISP，ISP再返回给计算机）—&gt;</p>
+<p>​	缓存IP地址（每个参与DNS 查询的DNS服务器，都会将查询结果缓存一段时间。这样，下次查询同一个域名时，就可以直接返回结果，加快解析速度。）</p>
+<h1 id="nslookup"><a href="#nslookup" class="headerlink" title="nslookup"></a>nslookup</h1><p>全称为name server lookup。语法格式：<code>nslookup –option1 –option2 host-to-find dns-server</code></p>
+<p>在nslookup查询的结果中，最上面的 Server 和 Address 是该词查询的 DNS 服务器。可以自己指定，也可以默认。默认情况下 DNS 服务器的端口为53。</p>
+<p>nslookup有两种模式：交互（键入nslookup回车进入）和非交互。</p>
+<p>资源记录（RR）（Resource Records）是包含了下列字段的4元组：**(Name, Value, Type, TTL)**</p>
+<p>其中Type有以下四个值：</p>
+<ul>
+<li>主机记录（A记录）：RFC1035定义，A记录是用于名称解析的重要记录，提供标准的主机名到IP的地址映射。</li>
+<li>别名记录（CNAME记录）：RFC1035定义，向查询的主机提供主机名对应的规范主机名。</li>
+<li>域名服务器记录（NS记录）：用来指定该域名由哪个DNS服务器来进行解析。 您注册域名时，总有默认的DNS服务器，每个注册的域名都是由一个DNS域名服务器来进行解析的，DNS服务器NS记录地址一般以以下的形式出现： ns1.domain.com、ns2.domain.com等。简单的说，NS记录返回域中主机IP地址的权威DNS服务器的主机名。</li>
+<li>邮件交换记录（MX记录）：返回别名为Name对应的邮件服务器的规范主机名。</li>
+</ul>
+<p>与dig相同，不添加参数的话，默认的查找到的DNS记录类型是A记录。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nslookup baidu.com</span><br></pre></td></tr></table></figure>
+
+<p>在交互模式下的话，需要输入以下指令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nslookup</span><br><span class="line">baidu.com</span><br></pre></td></tr></table></figure>
+
+<p>查看帮助的话可以在非交互模式下直接键入 <code>nslookup /?</code> 来查看简单的帮助，如果还想查看详细的帮助，可以在交互模式下键入 <code>？</code> 或者 <code>help</code> 来查看。一般可以查阅帮助手册达到查询目的。</p>
+<p>需要格外提醒的是，在不同模式下设置查询类型的方法：</p>
+<p>​	非交互模式：<code>nslookup -ty=类型 name</code></p>
+<p>​	交互模式：<code>set ty=类型</code></p>
+<p><strong>【都说nslookup可以使用 <code>nslookup -type=txt baidu.com</code> 查询 txt记录，但是我实际操作下来是不可以的，切换到交互模式也不行，在帮助菜单中也可以看到没有类型为txt记录的参数可指定。不知道其他人是怎么成功的，留存一下，日后来看。】</strong></p>
+<h1 id="dig"><a href="#dig" class="headerlink" title="dig"></a>dig</h1><p>全称为domain information group。语法格式：<code>dig [参数] 域名/IP地址</code></p>
+<p>（但是我发现在查询MX记录和CNAME时，参数可以放在想查询的域名后面，指令照样跑。）</p>
+<p>常用参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@&lt;服务器地址&gt;：指定进行域名解析的域名服务器；</span><br><span class="line">-b&lt;ip地址&gt;：当主机具有多个IP地址，指定使用本机的哪个IP地址向域名服务器发送域名查询请求；</span><br><span class="line">-f&lt;文件名称&gt;：指定dig以批处理的方式运行，指定的文件中保存着需要批处理查询的DNS任务信息；</span><br><span class="line">-P：指定域名服务器所使用端口号；</span><br><span class="line">-t&lt;类型&gt;：指定要查询的DNS数据类型；</span><br><span class="line">-x&lt;IP地址&gt;：执行逆向域名查询；</span><br><span class="line">-4：使用IPv4；</span><br><span class="line">-6：使用IPv6；</span><br><span class="line">-h：显示指令帮助信息。</span><br></pre></td></tr></table></figure>
+
+<p>以baidu.com为例，可以通过dig解析域名，便于问题排查。</p>
+<p>常见的DNS记录类型有：A记录（也是我们默认查询到的记录），MX记录（即邮箱），TXT记录，CNAME（映射）。各个记录的查询方法如下：</p>
+<p>①A记录(默认)</p>
+<p>A 记录是“地址记录”的缩写，用于将域名映射到一个 IPv4 地址。类似的，还有一个记录叫AAAA记录，AAAA记录与A记录类似，但它用于将域名映射到 IPv6 地址，而不是 IPv4 地址。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig baidu.com</span><br></pre></td></tr></table></figure>
+
+<p>②MX（邮箱）</p>
+<p>MX 记录是“邮件交换记录”的缩写，用于指定处理一个域名的邮件服务的服务器。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig mx baidu.com</span><br></pre></td></tr></table></figure>
+
+<p>还可以在以上两个指令后添加以下参数以查询到更简短直观的回复：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 这两个选项通常一起使用，用于只显示查询的答案部分，不显示其他信息。</span><br><span class="line">+noall +answer</span><br></pre></td></tr></table></figure>
+
+<p>③TXT</p>
+<p>验证域名所有权会经常使用TXT记录的方式，比如申请SLL证书或 Google、百度站长认证。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># @ 指定DNS服务器地址</span><br><span class="line">dig txt baidu.com @8.8.8.8 +noall +answer</span><br></pre></td></tr></table></figure>
+
+<p>④CNAME（映射）</p>
+<p>CNAME 是 Canonical Name 的缩写，是DNS（域名系统）记录的一种类型。CNAME记录用于将一个域名映射（别名）到另一个域名。换而言之，当我们访问一个设置了 CNAME 记录的域名时，实际上被重定向到了另一个域名。</p>
+<p>例如，假设有一个域名 baidu.com，我们想让用户通过 example.com 访问你的网站。那我们可以为 example.com 设置一个 CNAME 记录，将其映射到 baidu.com。这样，当用户访问 example.com 时，他们实际上访问的是 baidu.com。</p>
+<p>CNAME 记录在以下情况下非常有用：</p>
+<p>​	1）希望多个域名解析到同一个 IP 地址时。</p>
+<p>​	2）域名托管在第三方服务（如 GitHub Pages 或 Heroku）并且该服务可能更改其 IP 地址时。</p>
+<p>需要注意的是，CNAME 记录不能与任何其他数据共享同一个名称。也就是说，如果一个域名有 CNAME 记录，那么它不能有其他类型的记录（如 A 记录或 MX 记录）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig CAMNE baidu.com</span><br></pre></td></tr></table></figure>
+
+<p>使用dig不仅可以查询这些常见的DNS记录，还可以进行一些其他查询操作，比如反向查询和跟踪DNS完整解析过程。</p>
+<p>反向查询：通过 IP 查询域名，一般会把邮件服务器的IP转成域名，减少被当成垃圾邮件的可能性；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># +short：只显示查询结果中的 IP 地址</span><br><span class="line">dig -x 114.114.114.114 +short</span><br></pre></td></tr></table></figure>
+
+<p>跟踪DNS完整解析过程：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># +trace：用于显示查询的详细过程，可以用来跟踪 DNS 解析的路径。</span><br><span class="line">dig baidu.com +trace</span><br></pre></td></tr></table></figure>
+
+<h1 id="ping"><a href="#ping" class="headerlink" title="ping"></a>ping</h1><p>批量检测网段内存活主机</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for /L %D in (1,1,255) do ping 10.168.1.%D</span><br></pre></td></tr></table></figure>
+
+<p>可以用 <code>&gt;&gt;out.txt</code> 将结果输出到文本文件里</p>
+</p></div><div class="post-footer"><div class="tip">本文采用CC-BY-SA-3.0协议，转载请注明出处<br>作者: 小猫卷饼</div><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2024-08-18</span><i class="fa fa-tag"></i><a class="tag" href="/tags/一些证明自己还活着的记录/" title="一些证明自己还活着的记录">一些证明自己还活着的记录 </a><span class="leancloud_visitors"></span><span>大约2238个字, 7分钟27秒读完</span></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="" onclick="javascript:join_favorite()" ref="sidebar"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/intent/tweet?text=%E5%88%86%E4%BA%AB%E6%96%87%E7%AB%A0%EF%BC%9A%0A%0A%E5%B0%8F%E7%8C%AB%E5%8D%B7%E9%A5%BC%20%C2%B7%20nslookup%E5%92%8Cdig%E5%AD%A6%E4%B9%A0%E5%92%8C%E4%BD%BF%E7%94%A8%E6%9C%89%E6%84%9F%0Ahttp://example.com/2024/08/18/nslookup%E5%92%8Cdig%E5%AD%A6%E4%B9%A0%E5%92%8C%E4%BD%BF%E7%94%A8%E6%9C%89%E6%84%9F/%0A"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/2024/08/19/burpsuit%E4%BD%BF%E7%94%A8%E9%9A%8F%E6%89%8B%E8%AE%B0/" title="burpsuite使用随手记">上一篇</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/2024/08/16/jar%E5%8C%85%E6%97%A0%E6%B3%95%E4%B8%8D%E9%80%9A%E8%BF%87cmd%E7%94%A8java%E6%89%93%E5%BC%80/" title="jar包无法不通过cmd用java打开">下一篇</a></li></ul></div><script src="/js/visitors.js"></script></div></div></div></div><script src="/js/darkLightToggle.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/add-bookmark.js"></script><script>(function(window){var INSIGHT_CONFIG={TRANSLATION:{POSTS:"文章",PAGES:"页面",CATEGORIES:"分类",TAGS:"标签",UNTITLED:"(无标题)",},CONTENT_URL:"/content.json",};window.INSIGHT_CONFIG=INSIGHT_CONFIG})(window);</script><script src="/js/insight.js" defer></script><div class="searchbox ins-search"><div class="searchbox-container ins-search-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="想要查找什么..."><span class="searchbox-close"><a class="fa fa-times-circle" onclick="closeWindow();"></a></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"><p>Seraching...</p></div></div></div></div></body></html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html><html lang="zh-CN" id="theme-light-mode"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="小猫卷饼"><title>kali使用随手记之工具篇 · 小猫卷饼</title><meta name="description" content="如题。记录的比较多的会是工具的使用方面。
+
+
+本来想记录一下ubuntu上crunch和aircrack-ng的安装，但由于忘记了ubuntu的密码，重装了一个kali，才发现：我嘞个豆！我以前过的都是什么苦日子！
+存个命令再此，给健忘的自己：
+1sudo dpkg-reconfigure loca"><meta name="keywords" content="Blog,博客,Hexo"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="shortcut icon" type="image/x-icon" href="/images/xiaomao.jpg"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/insight.css"><link rel="stylesheet" href="/css/search.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><script src="/js/jquery.js"></script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="page-top animated fadeInDown"><div class="nav"><li> <a href="/">首页</a></li><li> <a href="/archives">归档</a></li><li> <a href="/tags">标签</a></li><li> <a href="/about">关于</a></li><li> <a href="/links">友链</a></li></div><div class="information"><div class="nav_right_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li><li><a class="fa fa-search" onclick="openWindow();"></a></li><li><a class="fa fa-sun-o" onclick="darkLightToggle();"></a></li></div><div class="avatar"><img src="/images/xiaomao.jpg"></div></div></div><div class="sidebar animated fadeInDown"><div class="sidebar-top"><div class="logo-title"><div class="title"><img src="/images/xiaomao.jpg" style="width:220px;" alt="favicon"><h3 title=""><a href="/">小猫卷饼</a></h3><div class="description"><p>大佬！请教我学技术！（抱住大腿</p></div></div><ul class="social-links"><li><a target="_blank" rel="noopener" href="https://github.com/xinxin123qwq"><i class="fa fa-github"></i></a></li><li><a href="mailto:xinxin123qwq@qq.com"><i class="fa fa-envelope"></i></a></li></ul></div></div><div class="footer"><div class="p"> <span> 全站CC-BY-SA-3.0 </span><i class="fa fa-star"></i><span> 小猫卷饼</span></div><div class="by_farbox"><span>Powered by </span><a href="https://hexo.io/zh-cn/" target="_blank">Hexo </a><span> & </span><a href="https://github.com/Lhcfl/hexo-theme-anatolo" target="_blank">Anatolo </a></div><div class="beian"></div></div></div><div class="main"><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>kali使用随手记之工具篇</a></h3></div><div class="post-content"><p><p>如题。记录的比较多的会是工具的使用方面。</p>
+<span id="more"></span>
+
+<p>本来想记录一下ubuntu上crunch和aircrack-ng的安装，但由于忘记了ubuntu的密码，重装了一个kali，才发现：我嘞个豆！我以前过的都是什么苦日子！</p>
+<p>存个命令再此，给健忘的自己：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg-reconfigure locales	//切换语言</span><br></pre></td></tr></table></figure>
+
+<p>关于配网，我图省事，配的是桥接模式、dhcp。</p>
+<img src="2024-05-25_kali%E4%BD%BF%E7%94%A8%E9%9A%8F%E6%89%8B%E8%AE%B0%E4%B9%8B%E5%B7%A5%E5%85%B7%E7%AF%87/eth0_1.jpg" style="zoom: 50%;" />
+
+<p>本来应该再配置一下DNS，文件路径为&#x2F;etc&#x2F;resolv.conf（114.114.114.114中国电信运营的公共DNS服务器，通常用于在中国地区访问互联网。8.8.8.8Google运营的公共DNS服务器，通常用于全球范围内的互联网访问。）</p>
+<p>但我写入后重启网络服务（命令：systemctl restart networking）后会被覆盖（(╬￣皿￣)不管了，能上网就行</p>
+<p>另外，校园网我恨你，一直获取不到ip，切了热点之后马上就嘎嘎跑。（还没试过校园宽带，埋个种子꒰ᐢ⸝⸝•༝•⸝⸝ᐢ꒱回去试）（这是什么？种子？拔掉get！٩( ‘ω’ )و）校园宽带可以获取ip，但是上网的时候会弹出校园宽带专属的认证界面，由于我只有一个校园网账号，主机已经online了，虚拟机无法同时online。</p>
+<p>思前想后还是决定配回NAT模式，还是图省事套的dhcp，对应的网卡配置文件内容为：</p>
+<img src="2024-05-25_kali%E4%BD%BF%E7%94%A8%E9%9A%8F%E6%89%8B%E8%AE%B0%E4%B9%8B%E5%B7%A5%E5%85%B7%E7%AF%87/eth0_2.jpg" style="zoom: 80%;" />
+
+<p>那个DNS配置文件不用管，会自己跟着变：</p>
+<img src="2024-05-25_kali%E4%BD%BF%E7%94%A8%E9%9A%8F%E6%89%8B%E8%AE%B0%E4%B9%8B%E5%B7%A5%E5%85%B7%E7%AF%87/eth0_3.jpg" style="zoom:80%;" />
+
+<p>WIN+R后，输入appwiz.cpl打开程序应用管理界面，输入services.msc打开服务管理。</p>
+<p>Xshell无法连接kali：</p>
+<p><img src="/2024-05-25_kali%E4%BD%BF%E7%94%A8%E9%9A%8F%E6%89%8B%E8%AE%B0%E4%B9%8B%E5%B7%A5%E5%85%B7%E7%AF%87/ssh1.jpg"></p>
+<p>Kali Linux默认没有打开ssh远程登录，在kali中找到配置文件，将其打开即可。（ssh就是一种网络协议，用于加密的远程登录，所以在没有打开ssh协议之前是无法使用Xshell连接Kali Linux）</p>
+<p>Kali Linux开启ssh，允许root用户远程登录，由于我的机器只是用于熟悉操作，所以此处我并没有设置开机自启动ssh，想要远程登录还需手动开启ssh才能远程登录。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br><span class="line">PasswordAuthentication yes	//启用了密码认证，允许用户通过输入用户名和密码来进行远程登录。</span><br><span class="line">修改PermitRootLogin without-password -&gt; PermitRootLogin yes	//允许root用户直接通过ssh登录.</span><br><span class="line">/etc/init.d/ssh start</span><br><span class="line">service ssh start	//这两条都可以用来启动ssh服务。</span><br><span class="line">/etc/init.d/ssh status	//查看ssh服务状态是否正常运行</span><br></pre></td></tr></table></figure>
+
+<p>重新连接就OK了。</p>
+<p>vscode远程连接（感觉在虚拟机和物理机里接这个有点累赘，不过还是很值得码一下，很好的远程服务器管理方式，参考的是这个：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/643891764%EF%BC%89">https://zhuanlan.zhihu.com/p/643891764）</a></p>
+<h1 id="crunch"><a href="#crunch" class="headerlink" title="crunch"></a>crunch</h1><p>–常用途径：生成一定规则的爆破字典–</p>
+<p>crunch的安装和使用参考的是这个师傅的博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/fox_wayen/article/details/78429140">https://blog.csdn.net/fox_wayen/article/details/78429140</a></p>
+<p>一般我们使用到的命令格式是：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crunch &lt;min-len&gt; &lt;max-len&gt; [&lt;charset string&gt;] [options] </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>min-len指crunch要开始的最小长度字符串。即使不使用参数的值，也需要此选项。</li>
+<li>max-len指crunch要开始的最大长度字符串。同上。</li>
+</ul>
+<p>在生成密码字典时，最常使用的[<charset string>]是-t @,%^，用于指定模式，@,%^分别代表意义如下：</p>
+<ul>
+<li>@ 插入小写字母</li>
+<li>, 插入大写字母</li>
+<li>% 插入数字</li>
+<li>^ 插入特殊符号</li>
+</ul>
+<p>-o wordlist.txt，指定输出文件的名称，例如wordlist.txt，也有人使用的是&gt;&gt;来指定输出文件，看个人习惯。（不过我觉得&gt;&gt;更直观</p>
+<h1 id="aircrack-ng"><a href="#aircrack-ng" class="headerlink" title="aircrack-ng"></a>aircrack-ng</h1><p>–常用途径：爆破WIFI密码–</p>
+<p>aircrack-ng的安装和使用相对来说比较无脑。</p>
+<p>在Windows系统里也可以安装和使用，官方下载：<a target="_blank" rel="noopener" href="https://download.aircrack-ng.org/aircrack-ng-1.5.2-win.zip">https://download.aircrack-ng.org/aircrack-ng-1.5.2-win.zip</a></p>
+<p>要想在Ubuntu里安装的话用到的是如下命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget https://download.aircrack-ng.org/aircrack-ng-1.6.tar.gz	//下载</span><br><span class="line">tar -zxvf aircrack-ng-1.6.tar.gz	//解压</span><br><span class="line"></span><br><span class="line">cd aircrack-ng-1.6</span><br><span class="line">make	//编译</span><br><span class="line">sudo make install	//安装</span><br></pre></td></tr></table></figure>
+
+<p>– – – – – – – –  loading。。。  – – – – – – – – </p>
+<p>.tar.gz一般情况下都是源代码的安装包，需要先解压，再经过编译、安装，才能执行。总而言之它是一个压缩文件。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf FileName.tar.gz	//解压</span><br><span class="line">tar -zcvf FileName.tar.gz DirName	//压缩</span><br></pre></td></tr></table></figure>
+
+<p>tar指的是tarball文件，所谓的 tarball 文件，其实就是将软件的所有原始码档案先以 tar 打包，然后再以压缩技术来压缩，通常最常见的就是以 gzip 来压缩了。因为利用了 tar 与 gzip 的功能，所以 tarball 档案一般的附档名就会写成 .tar.gz 或者是简写为 .tgz。</p>
+<p><code>make</code>指令用于读入一个名为makefile的文件，然后执行这个文件中指定的指令。</p>
+<p><code>make install</code>指令用于将程序安装至系统中。如果make原始码编译无误，且执行结果正确，便可以把程序安装至系统预设的可执行文件存放路径。默认&#x2F;usr&#x2F;local&#x2F;bin。</p>
+<p>（sudo make install 这一步是用来安装的，它也从makefile中读取指令，安装到指定的位置。这条命令来进行安装，一般需要有 root 权限（因为要向系统写入文件），所以前面用了 sudo。	⁞⁞⁞⁞꒰ ´╥ д ╥&#96;  ू ꒱⁞⁞⁞⁞</p>
+<p>– – – – – – – – exp+1~~  – – – – – – – – </p>
+<p>aircrack-ng一般是用来恢复WEP,WPA-PSK的密码，通过之前流量数据包的收集，可以用来破解数据包。通过wireshark收集的流量包，配合爆破的密码来进行，就可以解析数据包了。以最简单最经典的求解wifi密码为例，wifi连接认证的重点在于WAP的四次握手过程，也就是EAPOL协议的包，检索一下抓取的流量包中是否存在四次握手的过程，如有，则可以使用以下命令进行爆破：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aircrack-ng -w passwd.txt filename.cap</span><br></pre></td></tr></table></figure>
+
+<p>就可以得到wifi密码了。</p>
+<p>aircrack-ng的功能不仅限此，还可以通过分析流量对比进行监听，AP的伪造等等。</p>
+</p></div><div class="post-footer"><div class="tip">本文采用CC-BY-SA-3.0协议，转载请注明出处<br>作者: 小猫卷饼</div><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2024-05-25</span><a class="tag" href="/categories/misc/" title="misc">misc </a><i class="fa fa-tag"></i><a class="tag" href="/tags/一些证明自己还活着的记录/" title="一些证明自己还活着的记录">一些证明自己还活着的记录 </a><span class="leancloud_visitors"></span><span>大约1713个字, 5分钟42秒读完</span></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="" onclick="javascript:join_favorite()" ref="sidebar"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/intent/tweet?text=%E5%88%86%E4%BA%AB%E6%96%87%E7%AB%A0%EF%BC%9A%0A%0A%E5%B0%8F%E7%8C%AB%E5%8D%B7%E9%A5%BC%20%C2%B7%20kali%E4%BD%BF%E7%94%A8%E9%9A%8F%E6%89%8B%E8%AE%B0%E4%B9%8B%E5%B7%A5%E5%85%B7%E7%AF%87%0Ahttp://example.com/2024/05/25/kali%E4%BD%BF%E7%94%A8%E9%9A%8F%E6%89%8B%E8%AE%B0%E4%B9%8B%E5%B7%A5%E5%85%B7%E7%AF%87/%0A"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/2024/08/15/BaseCTF%E9%AB%98%E6%A0%A1%E8%81%94%E5%90%88%E6%96%B0%E7%94%9F%E8%B5%9B/" title="BaseCTF高校联合新生赛">上一篇</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/2024/05/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9A%8F%E6%89%8B%E8%AE%B0/" title="计算机网络随手记">下一篇</a></li></ul></div><script src="/js/visitors.js"></script></div></div></div></div><script src="/js/darkLightToggle.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/add-bookmark.js"></script><script>(function(window){var INSIGHT_CONFIG={TRANSLATION:{POSTS:"文章",PAGES:"页面",CATEGORIES:"分类",TAGS:"标签",UNTITLED:"(无标题)",},CONTENT_URL:"/content.json",};window.INSIGHT_CONFIG=INSIGHT_CONFIG})(window);</script><script src="/js/insight.js" defer></script><div class="searchbox ins-search"><div class="searchbox-container ins-search-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="想要查找什么..."><span class="searchbox-close"><a class="fa fa-times-circle" onclick="closeWindow();"></a></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"><p>Seraching...</p></div></div></div></div></body></html>

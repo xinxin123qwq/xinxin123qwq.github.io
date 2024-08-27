@@ -1,0 +1,158 @@
+<!DOCTYPE html><html lang="zh-CN" id="theme-light-mode"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="小猫卷饼"><title>暑期学习记录 · 小猫卷饼</title><meta name="description" content="对摆烂的自己深恶痛绝，决定在两个月的假期里总要学点什么，还望各位大佬监督！
+索引：linux指令、RSA、流量分析…
+
+
+汇总：①目前的想法是巩固一下之前学长学姐萌给我发的资料（dbq！！我真的太懒了！！！
+​           ②有待补充…
+– – – – – – – – 从此分割线开始学习 –"><meta name="keywords" content="Blog,博客,Hexo"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="shortcut icon" type="image/x-icon" href="/images/xiaomao.jpg"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/insight.css"><link rel="stylesheet" href="/css/search.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><script src="/js/jquery.js"></script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="page-top animated fadeInDown"><div class="nav"><li> <a href="/">首页</a></li><li> <a href="/archives">归档</a></li><li> <a href="/tags">标签</a></li><li> <a href="/about">关于</a></li><li> <a href="/links">友链</a></li></div><div class="information"><div class="nav_right_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li><li><a class="fa fa-search" onclick="openWindow();"></a></li><li><a class="fa fa-sun-o" onclick="darkLightToggle();"></a></li></div><div class="avatar"><img src="/images/xiaomao.jpg"></div></div></div><div class="sidebar animated fadeInDown"><div class="sidebar-top"><div class="logo-title"><div class="title"><img src="/images/xiaomao.jpg" style="width:220px;" alt="favicon"><h3 title=""><a href="/">小猫卷饼</a></h3><div class="description"><p>大佬！请教我学技术！（抱住大腿</p></div></div><ul class="social-links"><li><a target="_blank" rel="noopener" href="https://github.com/xinxin123qwq"><i class="fa fa-github"></i></a></li><li><a href="mailto:xinxin123qwq@qq.com"><i class="fa fa-envelope"></i></a></li></ul></div></div><div class="footer"><div class="p"> <span> 全站CC-BY-SA-3.0 </span><i class="fa fa-star"></i><span> 小猫卷饼</span></div><div class="by_farbox"><span>Powered by </span><a href="https://hexo.io/zh-cn/" target="_blank">Hexo </a><span> & </span><a href="https://github.com/Lhcfl/hexo-theme-anatolo" target="_blank">Anatolo </a></div><div class="beian"></div></div></div><div class="main"><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>暑期学习记录</a></h3></div><div class="post-content"><p><p>对摆烂的自己深恶痛绝，决定在两个月的假期里总要学点什么，还望各位大佬监督！</p>
+<p>索引：linux指令、RSA、流量分析…</p>
+<span id="more"></span>
+
+<p>汇总：①目前的想法是巩固一下之前学长学姐萌给我发的资料（dbq！！我真的太懒了！！！</p>
+<p>​           ②有待补充…</p>
+<p>– – – – – – – – 从此分割线开始学习 – – – – – – – – </p>
+<h1 id="linux-shell常用基础指令"><a href="#linux-shell常用基础指令" class="headerlink" title="linux shell常用基础指令"></a>linux shell常用基础指令</h1><p>复习一下linux的指令~</p>
+<p>1.ls命令：显示当前用户根目录</p>
+<p>​    ls -a:显示目录所有文件与文件夹（包括隐藏文件）</p>
+<p>​    ls -l:显示详细的文件信息</p>
+<p>​    ls -al:组合使用</p>
+<p>2.cd命令：切换目录</p>
+<p>3.pwd命令：显示当前路径</p>
+<p>4.uname命令：系统信息查看</p>
+<p>5.clear命令：清屏</p>
+<p>6.cat命令：查看文件内容</p>
+<p>7.sudo命令：</p>
+<p>​    sudo su</p>
+<p>​    sudo su hbq</p>
+<p>8.touch命令：创建新文件</p>
+<p>9.cp命令：拷贝命令</p>
+<p>10.rm命令：删除命令</p>
+<p>​    rm -f:就是删</p>
+<p>​    rm -r:删除目录</p>
+<p>11.mkdir命令：创建文件夹</p>
+<p>12…&#x2F;返回上一级</p>
+<p>13.mv命令：移动文件（重命名）</p>
+<p>14.ifconfig命令：显示网络配置信息</p>
+<p>15.”命令“ –help：打开帮助信息</p>
+<p>16.reboot命令：重启</p>
+<p>17.poweroff命令：关机</p>
+<p>18.man命令：系统帮助命令</p>
+<p>19.sync命令：磁盘同步命令</p>
+<p>20.find命令：查找文件名</p>
+<p>​    find -name a.c</p>
+<p>21.greg命令：查找文件内的包括子目录</p>
+<p>22.du命令：查看文件大小</p>
+<p>23.df命令：磁盘检查</p>
+<p>24.gedit命令：记事本</p>
+<p>25.ps命令：查看当前系统进程</p>
+<p>26.top命令：查看当前时时状态</p>
+<p>27.file命令：查看文件类型</p>
+<h1 id="vim编辑器使用手册"><a href="#vim编辑器使用手册" class="headerlink" title="vim编辑器使用手册"></a>vim编辑器使用手册</h1><p>再复习一下vim~</p>
+<h4 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h4><p>用户再启动vi后，直接进入了命令模式。在此模式下可以输入各种命令。以下是几种常用的命令:</p>
+<ul>
+<li>i 切换到输入模式，以输入字符</li>
+<li>x 删除当前光标所在处的字符</li>
+<li>: 切换到底线命令模式，以在最底一行输入命令</li>
+</ul>
+<h4 id="输入模式"><a href="#输入模式" class="headerlink" title="输入模式"></a>输入模式</h4><p>在命令模式下输入i进入输入模式。在输入模式中，可以使用以下按键完成想要的输入:</p>
+<ul>
+<li>按键输入各种字符</li>
+<li>方向键 在文本中移动光标</li>
+<li>ENTER 回车键，换行</li>
+<li>BACK SPACE 退格键，删除光标所在位置前的一个字符</li>
+<li>DEL 删除键，删除光标所在位置后的一个字符</li>
+<li>HOME&#x2F;END 移动光标到行首&#x2F;行尾</li>
+<li>Page Up&#x2F;Page Down 上&#x2F;下翻页</li>
+<li>Insert 切换光标为输入&#x2F;替换模式，光标将变成竖线&#x2F;下划线</li>
+<li>ESC 退出输入模式，回到命令模式</li>
+</ul>
+<h4 id="底线命令模式"><a href="#底线命令模式" class="headerlink" title="底线命令模式"></a>底线命令模式</h4><p>在命令模式下输入:进入底线命令模式，底线命令模式相比普通的命令模式，增加了许多可用的命令，最基本的命令如下:</p>
+<ul>
+<li>q 退出程序</li>
+<li>w 保存文件</li>
+<li>按下ESC 或回车执行命令退出底线命令模式，回到命令模式</li>
+</ul>
+<h1 id="RSA加密"><a href="#RSA加密" class="headerlink" title="RSA加密"></a>RSA加密</h1><p>复习一下RSA加密的流程：</p>
+<p>先取两素数（也称质数）p、q，然后我们可以得到</p>
+<p>n&#x3D;p*q</p>
+<p>还能得到 f(n)&#x3D;(p-1)*(q-1)</p>
+<p>（欧拉函数描述了小于某个正整数n且与n互质的正整数的个数。例如对于质数p，φ(p) &#x3D; p - 1，对于两个互质的质数p和q，φ(pq) &#x3D; (p - 1) * (q - 1)。）</p>
+<p>走至此步的时候我们可以引申出一个较小数e，e与 f(n) 互质，即它们的最大公约数为1（此处的e是公钥之一，e可以不止一个），且1&lt;e&lt;f(n)。</p>
+<p>到此，我们可以得到<code>公钥 (n,e)</code></p>
+<p>然后可以根据d*e%f(n)&#x3D;1得到私钥之一のd（先相乘再取余）（乘和取余优先级相同）</p>
+<p>到此可得<code>私钥为 (n,d)</code></p>
+<p>产生密文c&#x3D;m^e%n</p>
+<p>解出明文m&#x3D;c^d%n</p>
+<p>（平方取余）</p>
+<h1 id="流量分析解题思路"><a href="#流量分析解题思路" class="headerlink" title="流量分析解题思路"></a>流量分析解题思路</h1><p>先搜索关键词</p>
+<ul>
+<li>Base64：Zmxh(fla)</li>
+<li>Hex（十六进制）：666c6167&#x2F;666C6167(flag)、666c61677b(flag{)</li>
+<li>Unicode：flag(flag)</li>
+</ul>
+<p>比较基础的是查看ping包，如果是ping包的话那就是看ICMP协议了，要先过滤出ICMP的流量</p>
+<p>ctf比赛中常见的较为经典的流量分析有以下几种题型</p>
+<ol>
+<li><p>ping 报文信息  （icmp协议）</p>
+</li>
+<li><p>上传&#x2F;下载文件（蓝牙obex，http，难:文件的分段上传&#x2F;下载）</p>
+</li>
+<li><p>sql注入攻击</p>
+</li>
+<li><p>访问特定的加密解密网站（md5，base64）</p>
+</li>
+<li><p>后台扫描+弱密码爆破+菜刀</p>
+</li>
+<li><p>usb流量分析</p>
+</li>
+<li><p>WiFi无线密码破解</p>
+</li>
+<li><p>根据一组流量包了解黑客的具体行为</p>
+</li>
+</ol>
+<p><strong>1.ping 报文信息  （icmp协议）</strong></p>
+<p><strong>2.上传&#x2F;下载文件（蓝牙obex，http，难:文件的分段上传&#x2F;下载）</strong></p>
+<p><strong>3.sql注入攻击</strong></p>
+<p><strong>4.访问特定的加密解密网站（md5，base64）</strong></p>
+<p><strong>5.后台扫描+弱密码爆破+菜刀</strong></p>
+<p>以buuctf的菜刀666为例，打开附件发现很多TCP包</p>
+<img src="2023-07-03_%E6%9A%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/caidao1.png" style="zoom: 50%;" />
+
+<p>过滤POST的包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http.request.method==POST</span><br></pre></td></tr></table></figure>
+
+<p>– – – – – – – – 我<del>是</del>分<del>割</del>线~＾＿－)≡★  – – – – – – – – </p>
+<p>（应用层、传输层、网络层、数据链路层、物理层）</p>
+<ul>
+<li>TCP是一个面向连接的、可靠的、基于字节流的传输层协议。</li>
+<li>UDP是一个面向无连接的传输层协议。</li>
+</ul>
+<p>具体来分析，和UDP相比，TCP有三大核心特性：</p>
+<p><em>1.面向连接。</em></p>
+<p>所谓的连接，指的是客户端和服务器的连接，在双方互相通信之前，TCP需要三次握手建立连接，而UDP没有相应建立连接的过程。</p>
+<img src="2023-07-03_%E6%9A%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/tcp1.png" style="zoom:60%;" />
+
+<p>另外，从图中可以看出，SYN是需要消耗一个序列号的，下次发送对应的ACK序列号要加1，为什么呢？只需要记住一个规则：<u>凡是需要对端确认的，一定消耗TCP报文的序列号。</u></p>
+<p>SYN需要对端的确认，而ACK并不需要，因此SYN消耗一个序列号而ACK不需要。</p>
+<img src="2023-07-03_%E6%9A%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/tcp2.png" style="zoom:60%;" />
+
+
+
+<p><em>2.可靠性。</em></p>
+<p>TCP花了非常多的功夫保证连接的可靠，这个可靠性体现在哪些方面呢？一个是有状态，另一个是可控制。</p>
+<p>TCP会精准记录哪些数据发送了，哪些数据被对方接收了，哪些没有被接收到，而且保证数据包按序到达，不允许半点差错。这是有状态。</p>
+<p>当意识到丢包了或者网络环境不佳，TCP会根据具体情况调整自己的行为，控制自己的发送速度或者重发，一般来说都是发送端收不到接收端传来的ACK时，会认为是接收确认返回超时，会进行超时重传。这是可控制。</p>
+<p>相应的，UDP就是无状态，不可控的。</p>
+<p>另外，传输过程不区分服务端和客户端，因为TCP连接是全双工的，对两端来说采用一样的机制。</p>
+<p><em>3.面向字节流。</em></p>
+<p>UDP的数据传输是基于数据报的，这是因为仅仅只是继承了P层的特性，而TCP为了维护状态，将一个个P包变成了字节流。</p>
+<p>（几个小思考：为什么不是两次握手或者三次握手？</p>
+<p>– – – – – – – – 恭喜exp+1！要继续努力鸭(－ｏ⌒) ☆  – – – – – – – – </p>
+<p><strong>6.usb流量分析</strong></p>
+<p><strong>7.WiFi无线密码破解</strong></p>
+<p><strong>8.根据一组流量包了解黑客的具体行为</strong></p>
+<p>对于工控CTF之协议Modbus</p>
+<p><strong>题目中一般只考Modbus&#x2F;TCP类型</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1：读线圈</span><br><span class="line">2：读离散输入</span><br><span class="line">3：读保持</span><br><span class="line">4：读输入</span><br><span class="line">5：写单个线圈</span><br><span class="line">6：写单个保持</span><br><span class="line">15：写多个线圈</span><br><span class="line">16：写多个保持</span><br></pre></td></tr></table></figure>
+
+</p></div><div class="post-footer"><div class="tip">本文采用CC-BY-SA-3.0协议，转载请注明出处<br>作者: 小猫卷饼</div><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2023-07-03</span><a class="tag" href="/categories/misc/" title="misc">misc </a><i class="fa fa-tag"></i><a class="tag" href="/tags/一些证明自己还活着的记录/" title="一些证明自己还活着的记录">一些证明自己还活着的记录 </a><span class="leancloud_visitors"></span><span>大约2143个字, 7分钟8秒读完</span></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="" onclick="javascript:join_favorite()" ref="sidebar"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/intent/tweet?text=%E5%88%86%E4%BA%AB%E6%96%87%E7%AB%A0%EF%BC%9A%0A%0A%E5%B0%8F%E7%8C%AB%E5%8D%B7%E9%A5%BC%20%C2%B7%20%E6%9A%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%0Ahttp://example.com/2023/07/03/%E6%9A%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/%0A"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/2024/04/29/%E5%85%B3%E4%BA%8Ehash%E7%9A%84%E4%B8%89%E4%B8%A4%E4%BA%8B/" title="关于hash的三两事">上一篇</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/2023/02/03/2023%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91%E5%88%9D%E8%B5%9B/" title="2023西湖论剑初赛">下一篇</a></li></ul></div><script src="/js/visitors.js"></script></div></div></div></div><script src="/js/darkLightToggle.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/add-bookmark.js"></script><script>(function(window){var INSIGHT_CONFIG={TRANSLATION:{POSTS:"文章",PAGES:"页面",CATEGORIES:"分类",TAGS:"标签",UNTITLED:"(无标题)",},CONTENT_URL:"/content.json",};window.INSIGHT_CONFIG=INSIGHT_CONFIG})(window);</script><script src="/js/insight.js" defer></script><div class="searchbox ins-search"><div class="searchbox-container ins-search-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="想要查找什么..."><span class="searchbox-close"><a class="fa fa-times-circle" onclick="closeWindow();"></a></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"><p>Seraching...</p></div></div></div></div></body></html>
