@@ -16,12 +16,12 @@
 <p>图片逐帧分离后思考下一步应该做什么，观察到这样的方格显示，猜测是将两个颜色的方块图片分离出来，分别合并出两张二维码。但人工合并工作量太大，转而写脚本（平等的痛恨每一个会写py脚本的人</p>
 <p>好吧、、我不会写脚本，只好人工查看图片画一个二维码出来。</p>
 <p>查看了一会，发现如果真的按我目前的思路来说是二维码的话，按方格颜色显示来说，不管是两种颜色的那种，最后画出来都缺少定位点，于是观察了图片四个角，发现一个合理的定位点都没有，可见这个思路是错误的（好险，差点就要白干半个小时</p>
-<p><img src="/2023-01-16_misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/ssk1.jpg"></p>
+<p><img src="/2023/01/16/misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/ssk1.jpg"></p>
 <p>小tips：我原本画二维码是用ps新建画布，缺点就是需要先去数一遍画布像素长宽，虽然后期可以修改，但依旧有些麻烦。查看了别人的思路，发现Excel也可以画二维码，调整一下行高和列宽，用填涂工具将单元格涂黑就可以，不需要后期去改画布，方便，码住，以后如果遇到需要画二维码的题可以用。</p>
 <p>题目至此就卡住了，不是原先想到的思路的话，只好抓住题目提示、常规一套检查下来，在010中套用了gif的模板，拖动到文件最后面时发现有无底色的模块，找到显色模块和无底色模块交界处，发现了熟悉的文件头，看来此gif后藏着一张png</p>
-<p><img src="/2023-01-16_misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/ssk2.jpg"></p>
+<p><img src="/2023/01/16/misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/ssk2.jpg"></p>
 <p>拖入我的破烂虚拟机binwalk一下，失败了，那就foremost一下，拿出来一张图片</p>
-<img src="2023-01-16_misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/ssk3.jpg" style="zoom:80%;" />
+<img src="/2023/01/16/misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/ssk3.jpg" style="zoom:80%;">
 
 <p>图片上标着key，尝试了一下发现不是flag（肯定不是</p>
 <p>难道此key是什么我没找出来的压缩包密码？或者是某加密的key？</p>
@@ -34,19 +34,19 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">100100001100011110111011100100111000011110110100110101001011011111000111100010001000110010010110101001111001101011010000101110101010110110111001100011111011111010110010100111101011110110101111100101101011011010011100100101011100111010001100101101111000011010111000101100001011001010010010101011101011101110010100101101001101010010001010101001111000110010101001101001011001100010001101100110101100101010111011101011001010011110001000110000101100001010010111100101111001011110010111100101111001011110010111100101111001011110010111100101111001011110010111100101111001011110010111</span><br></pre></td></tr></table></figure>
 
 <p>将得到的结果分别拖入瑞士军刀，发现绿0紫1可以以ASCⅡ码转为字符得到结果</p>
-<p><img src="/2023-01-16_misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/ssk4.jpg"></p>
+<p><img src="/2023/01/16/misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/ssk4.jpg"></p>
 <p>结合上文我们拿到的key，可以判断是一个有key的解码或者加密，长得有点像base64，但base解密不需要key，所以只能是des，在 <a target="_blank" rel="noopener" href="http://tool.chacuo.net/cryptdes">http://tool.chacuo.net/cryptdes</a> 里输入明文和密钥解密一下，就能拿到flag</p>
-<p><img src="/2023-01-16_misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/ssk5.jpg"></p>
+<p><img src="/2023/01/16/misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/ssk5.jpg"></p>
 <p>比起瑞士军刀，上文提到的网址也很不错，可以自动匹配合适的模式跟输入，可惜是个在线工具</p>
 <p>我有尝试在瑞士军刀里解这个des，但没成功<strong>【等日后strong了再来试试】</strong></p>
 <h1 id="Erik-Baleog-and-Olaf"><a href="#Erik-Baleog-and-Olaf" class="headerlink" title="Erik-Baleog-and-Olaf"></a>Erik-Baleog-and-Olaf</h1><p>拿到一个二进制文件，拖入010查看发现其是个后缀为png的图像文件</p>
-<p><img src="/2023-01-16_misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/ebao1.jpg"></p>
+<p><img src="/2023/01/16/misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/ebao1.jpg"></p>
 <p>修改后缀名拿到一张图片</p>
-<p><img src="/2023-01-16_misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/ebao2.jpg"></p>
+<p><img src="/2023/01/16/misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/ebao2.jpg"></p>
 <p>由于文件名是stego100，联想到可能是lsb隐写，于是打开我的破烂虚拟机</p>
-<p><img src="/2023-01-16_misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/ebao3.jpg"></p>
+<p><img src="/2023/01/16/misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/ebao3.jpg"></p>
 <p>该网址无法访问，于是拖入stegsolve中查看，发现图片中间隐隐有二维码出现，但都或是残缺或是模糊不清，本想通过ps拼接，但二维码残缺的右下角实在过于模糊</p>
-<p><img src="/2023-01-16_misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/ebao4.jpg"></p>
+<p><img src="/2023/01/16/misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/ebao4.jpg"></p>
 <p>– – – – – – – – 一条分割线ᕦ(･ㅂ･)ᕤ – – – – – – – – </p>
 <p>查看了大佬的wp，发现此题有两种解法，一种便是如以上提到的一样，找到两张还算清晰的二维码用ps拼接起来；还有一种便是访问上文提到的网址，从网址里可以下载到一张图片，使用脚本得到二维码，但由于该网址下载无法访问了，此解题思路只好卡住。</p>
 <p>大佬的脚本：（maybe是python语言的（本人是语言白痴</p>
@@ -78,30 +78,30 @@
 </tr>
 </tbody></table>
 <p>可是谁能想到它不按套路出牌，这么多00啊！</p>
-<p><img src="/2023-01-16_misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/something_in_image1.jpg"></p>
+<p><img src="/2023/01/16/misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/something_in_image1.jpg"></p>
 <p>瞎猫碰死耗子search一下</p>
-<p><img src="/2023-01-16_misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/something_in_image2.jpg"></p>
+<p><img src="/2023/01/16/misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/something_in_image2.jpg"></p>
 <p>找到了，交了。</p>
 <p>– – – – – – – – 发现一个好玩的– – – – – – – – </p>
-<p><img src="/2023-01-16_misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/something_in_image3.jpg"></p>
+<p><img src="/2023/01/16/misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/something_in_image3.jpg"></p>
 <p>突然发现，该文件其实是很大的，就这样拿到了flag会不会太过于简单了</p>
 <p>于是在思考有没有第二种解法</p>
 <p>binwalk一下拿到一堆破烂（这是可以说的吗</p>
-<img src="2023-01-16_misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/something_in_image4.jpg" style="zoom:80%;" />
+<img src="/2023/01/16/misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/something_in_image4.jpg" style="zoom:80%;">
 
-<img src="2023-01-16_misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/something_in_image5.jpg" style="zoom:80%;" />
+<img src="/2023/01/16/misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/something_in_image5.jpg" style="zoom:80%;">
 
 <p>虽然不知道这是什么，也没找到第二种解法，但是还蛮有意思的，留存一下，如果别的师傅发掘出第二种解法的话，希望能一起交流一下~</p>
 <h1 id="embarrass"><a href="#embarrass" class="headerlink" title="embarrass"></a>embarrass</h1><p>被我的默认打开方式狠狠的背刺了一下，由于对后缀名为.pcapng的文件我的默认打开方式是wireshark，打开后看了半天都没发现有用信息</p>
 <p>觉得无计可施准备回归原始的时候，发现其实只要搜索一下就能找到flag（汗流浃背了，真的如题名一样embarrassed</p>
-<p><img src="/2023-01-16_misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/embarrass1.jpg"></p>
+<p><img src="/2023/01/16/misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/embarrass1.jpg"></p>
 <h1 id="tunnel"><a href="#tunnel" class="headerlink" title="tunnel"></a>tunnel</h1><p>吸取前几题的教训，要先查看题目的含义，发现tunnel是一个网络协议，通过使用tunnel1（例如）进行了一个不兼容的交付网络的有效载荷，或通过一个不受信任的网络提供一个安全的路径。</p>
-<p>wireshark打开，观察到所含tcp&amp;dns包较多。本来想看看能不能从还原的html中导出文件找到线索，结果只是一个幌子。<br><img src="2023-01-16_misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/tunnel1.jpg" style="zoom: 67%;" /></p>
+<p>wireshark打开，观察到所含tcp&amp;dns包较多。本来想看看能不能从还原的html中导出文件找到线索，结果只是一个幌子。<br><img src="/2023/01/16/misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/tunnel1.jpg" style="zoom: 67%;"></p>
 <p>拖入010也没有特别的收获。看来是没有捷径可走。</p>
 <p>如果对数据比较敏感的话，其实可以观察到每个dns包里都有一段异常且规律的字符，基础比较扎实的话，可以很直观的判断出是base64编码。图上所选中的那串，删去点号后的内容—&gt;base64解密，可以观察到是一个压缩包的文件头。</p>
-<img src="2023-01-16_misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/tunnel2.jpg" style="zoom: 50%;" />
+<img src="/2023/01/16/misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/tunnel2.jpg" style="zoom: 50%;">
 
-<img src="2023-01-16_misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/tunnel3.jpg" style="zoom:67%;" />
+<img src="/2023/01/16/misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/tunnel3.jpg" style="zoom:67%;">
 
 <p>到此思路已经很清晰了，首先我们要把这个压缩包给提取出来，需要用到tshark。</p>
 <p>tshark相当于是命令行版的wireshark，不需要额外安装，在安装wireshark的时候就会安装上这个工具。我所参考所著文章的大佬建议把tshark加入到环境变量中，方便后续使用。</p>
@@ -121,10 +121,10 @@
 <p> <strong>时间搜索：</strong></p>
 <p>时间的搜索会比较慢，需要一点耐心。</p>
 <p>dateaccessed:2016&#x2F;7&#x2F;5—&gt;2016&#x2F;7&#x2F;5看你的操作系统日期格式</p>
-<p>datecreated:<date> 搜索指定创建日期的文件和文件夹.简写dc:</p>
-<p>datemodified:<date> 搜索指定修改日期的文件和文件夹. 简写dm:</p>
-<p>daterun:<date> 搜索指定打开时间的文件和文件夹. 简写 dr:</p>
-<p>recentchange:<date> 搜索指定最近修改日期的文件和文件夹.简写 rc:</p>
+<p>datecreated:<date> 搜索指定创建日期的文件和文件夹.简写dc:</date></p>
+<p>datemodified:<date> 搜索指定修改日期的文件和文件夹. 简写dm:</date></p>
+<p>daterun:<date> 搜索指定打开时间的文件和文件夹. 简写 dr:</date></p>
+<p>recentchange:<date> 搜索指定最近修改日期的文件和文件夹.简写 rc:</date></p>
 <p>– – – – – – – – 回到正文 – – – – – – – – </p>
 <p>配置一下tshark的环境变量，就可以快乐的在任何地方打开命令行使用tshark.exe或者tshark指令啦！</p>
 <p>提取……</p>
@@ -135,14 +135,14 @@
 <li>-T fields 输出格式，选fields按字段，也可以选json等其他格式，需结合-e 及 -E使用</li>
 <li>-e ip.src （-e 输出报文指定字段）</li>
 <li>-e dns.qry.name 提取dns查询的域名信息</li>
-<li>-Y <display filter> 使用读取过滤器，筛选过滤报文</li>
+<li>-Y <display filter> 使用读取过滤器，筛选过滤报文</display></li>
 <li>&gt; out.txt 将内容输出到out.txt文件</li>
 <li>grep 使用正则过滤，过滤出想要的内容</li>
 </ul>
 <p>注：如果要在Windows上使用此命令，需要先安装grep并添加进环境变量里。</p>
 <h1 id="RSA-KU"><a href="#RSA-KU" class="headerlink" title="RSA_KU"></a>RSA_KU</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">n = 129699330328568350681562198986490514508637584957167129897472522138320202321246467459276731970410463464391857177528123417751603910462751346700627325019668100946205876629688057506460903842119543114630198205843883677412125928979399310306206497958051030594098963939139480261500434508726394139839879752553022623977</span><br><span class="line">e = 65537</span><br><span class="line">c = 42204904341397356484610011753870047277587731406909565109224522882727269900684810320714911339066349548912006144129002951103503549395253161181318529074503132491971940326830913538640509691606033919564352793998953237718985427573037781015508764442193508992597063837542020427378067044363827966672708324633713215280</span><br><span class="line">#(p-2)*(q-1) = 129699330328568350681562198986490514508637584957167129897472522138320202321246467459276731970410463464391857177528123417751603910462751346700627325019668067056973833292274532016607871906443481233958300928276492550916101187841666991944275728863657788124666879987399045804435273107746626297122522298113586003834</span><br><span class="line">#(p-1)*(q-2) = 129699330328568350681562198986490514508637584957167129897472522138320202321246467459276731970410463464391857177528123417751603910462751346700627325019668066482326285878341068180156082719320570801770055174426452966817548862938770659420487687194933539128855877517847711670959794869291907075654200433400668220458</span><br></pre></td></tr></table></figure>
 
-<img src="2023-01-16_misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/rsa_ku1.jpg" alt="rsa_ku1" style="zoom: 67%;" />
+<img src="/2023/01/16/misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/rsa_ku1.jpg" alt="rsa_ku1" style="zoom: 67%;">
 
 <p>得p&#x3D;11104861498641160020551133747582851050482827883841239117180799157472078278661946047575808556331157873693827396366774529894387508349540416345196575506278923</p>
 <p>q&#x3D;11679509046055093484387585536769973960915016129595089156764897709796981174994469835617477280580153684696296947700908005372625963068761884667061288424062299</p>
@@ -150,26 +150,26 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> long_to_bytes</span><br><span class="line"></span><br><span class="line">p = <span class="number">11104861498641160020551133747582851050482827883841239117180799157472078278661946047575808556331157873693827396366774529894387508349540416345196575506278923</span></span><br><span class="line">q = <span class="number">11679509046055093484387585536769973960915016129595089156764897709796981174994469835617477280580153684696296947700908005372625963068761884667061288424062299</span></span><br><span class="line">e = <span class="number">65537</span></span><br><span class="line">c = <span class="number">42204904341397356484610011753870047277587731406909565109224522882727269900684810320714911339066349548912006144129002951103503549395253161181318529074503132491971940326830913538640509691606033919564352793998953237718985427573037781015508764442193508992597063837542020427378067044363827966672708324633713215280</span></span><br><span class="line"></span><br><span class="line">n = p * q</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算 d = e^-1 mod (p-1)(q-1)</span></span><br><span class="line">phi = (p - <span class="number">1</span>) * (q - <span class="number">1</span>)</span><br><span class="line">d = gmpy2.invert(e, phi)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解密密文</span></span><br><span class="line">m = gmpy2.powmod(c, d, n)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;m:&quot;</span>, long_to_bytes(m))</span><br></pre></td></tr></table></figure>
 
 <p>报错</p>
-<img src="2023-01-16_misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/rsa_ku2.jpg" alt="rsa_ku1" style="zoom: 80%;" />
+<img src="/2023/01/16/misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/rsa_ku2.jpg" alt="rsa_ku1" style="zoom: 80%;">
 
 <p>此报错表示Python无法找到名为gmpy2的模块。gmpy2是一个第三方库，专门用于Python中的数学计算，特别是大整数和有限域算术。</p>
 <p>可以使用pip安装gmpy2模块解决此报错：</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install gmpy2</span><br></pre></td></tr></table></figure>
 
 <p>如果安装失败，需要检查pip是否为最新版本，或者是否在正确的Python环境中执行安装命令。</p>
-<img src="2023-01-16_misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/rsa_ku3.jpg" alt="rsa_ku2" style="zoom: 67%;" />
+<img src="/2023/01/16/misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/rsa_ku3.jpg" alt="rsa_ku2" style="zoom: 67%;">
 
-<img src="2023-01-16_misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/rsa_ku4.jpg" style="zoom:80%;" />
+<img src="/2023/01/16/misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/rsa_ku4.jpg" style="zoom:80%;">
 
 <p>注意观察报错，输入提示命令：</p>
-<img src="2023-01-16_misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/rsa_ku5.jpg" style="zoom: 67%;" />
+<img src="/2023/01/16/misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/rsa_ku5.jpg" style="zoom: 67%;">
 
 <p>不要忘记我们最初的目的，回到刚刚那条指令：</p>
-<img src="2023-01-16_misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/rsa_ku6.jpg" style="zoom: 67%;" />
+<img src="/2023/01/16/misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/rsa_ku6.jpg" style="zoom: 67%;">
 
 <p>等待一会就好……loading……（u1s1是真的慢啊……</p>
 <p>还是不行×，本来打算再仔细查看一下报错，但是等我吃个夜宵回来发现居然自己就好了？怪也</p>
-<img src="2023-01-16_misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/rsa_ku7.jpg" style="zoom: 67%;" />
+<img src="/2023/01/16/misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/rsa_ku7.jpg" style="zoom: 67%;">
 
 <p>同理我们再进行安装Crypto库（感叹一下，非常顺畅啊，没有碰到报错，可能是因为先前升级pip到新版本，网络正好也顺畅</p>
 <p>运行py文件的时候还是出现了报错：No module named ‘Crypto’</p>
@@ -177,18 +177,18 @@
 <p>与之不同的是，我在安装pycrypto库的时候没有安装上，进入python\Lib\site-packages中时发现目标文件夹名已是Crypto了，重新运行程序，程序就能嘎嘎跑了。比较赞成该师傅的这句话：“反正都是瞎搞，只要代码跑得起来就不要动了。”</p>
 <p>（不过在此犯了一个低级错误引发了“ModuleNotFoundError: No module named ‘Crypto.Util.number.long_to_bytes’; ‘Crypto.Util.number’ is not”的报错。原因是我直接导入了Crypto.Util.number.long_to_bytes，而Crypto.Util.number.long_to_bytes并不是一个模块，想要导入和使用long_to_bytes函数，正确的导入语句应该是from Crypto.Util.number import long_to_bytes</p>
 <h1 id="我的二维码怎么扫不出来"><a href="#我的二维码怎么扫不出来" class="headerlink" title="我的二维码怎么扫不出来"></a>我的二维码怎么扫不出来</h1><p>题目拿到一张图片和一个py文件</p>
-<img src="2023-01-16_misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/erweimasaobuchu1.png" style="zoom:80%;" />
+<img src="/2023/01/16/misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/erweimasaobuchu1.png" style="zoom:80%;">
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image	//导入PIL库中的Image模块，用于图像处理。</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">reverse_color</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span> <span class="keyword">if</span> x == <span class="number">255</span> <span class="keyword">else</span> <span class="number">255</span>	//反转像素块的灰度值。</span><br><span class="line">//整行反转。</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">reverse_row_colors</span>(<span class="params">pixels, row, width, block_size=<span class="number">10</span></span>):	//块大小默认为<span class="number">10</span>是因为这个二维码是<span class="number">25</span>*<span class="number">25</span>码元的，图片大小是<span class="number">250</span>像素*<span class="number">250</span>像素，所以每个二维码块占<span class="number">10</span>像素*<span class="number">10</span>像素。</span><br><span class="line">    <span class="keyword">for</span> x_block <span class="keyword">in</span> <span class="built_in">range</span>(width // block_size):	//遍历每一列，达到反转行的目的。</span><br><span class="line">        x = x_block * block_size</span><br><span class="line">        y = row * block_size</span><br><span class="line">        <span class="keyword">for</span> x_small <span class="keyword">in</span> <span class="built_in">range</span>(x, x + block_size):	//将二维码块的每个像素块反转。</span><br><span class="line">            <span class="keyword">for</span> y_small <span class="keyword">in</span> <span class="built_in">range</span>(y, y + block_size):</span><br><span class="line">                pixel = pixels[x_small, y_small]	//获取当前像素的值。</span><br><span class="line">                pixels[x_small, y_small] = reverse_color(pixel)</span><br><span class="line">//整列反转。</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">reverse_col_colors</span>(<span class="params">pixels, col, height, block_size=<span class="number">10</span></span>):</span><br><span class="line">    <span class="keyword">for</span> y_block <span class="keyword">in</span> <span class="built_in">range</span>(height // block_size):</span><br><span class="line">        x = col * block_size</span><br><span class="line">        y = y_block * block_size</span><br><span class="line">        <span class="keyword">for</span> x_small <span class="keyword">in</span> <span class="built_in">range</span>(x, x + block_size):</span><br><span class="line">            <span class="keyword">for</span> y_small <span class="keyword">in</span> <span class="built_in">range</span>(y, y + block_size):</span><br><span class="line">                pixel = pixels[x_small, y_small]</span><br><span class="line">                pixels[x_small, y_small] = reverse_color(pixel)</span><br><span class="line"></span><br><span class="line">original_img = Image.<span class="built_in">open</span>(<span class="string">&quot;flag.png&quot;</span>)</span><br><span class="line"></span><br><span class="line">new_img = original_img.copy()	//浅拷贝，深拷贝使用deepcopy()。</span><br><span class="line"></span><br><span class="line">width, height = new_img.size	//获取图片的长和宽（像素）</span><br><span class="line">pixels = new_img.load()</span><br><span class="line">//load() 函数可以打开一个文件对象，将其读取为 JSON 格式的字符串数据，并将其转化为 Python 对象。</span><br><span class="line">count = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> count &lt; <span class="number">7</span>:</span><br><span class="line">    x = random.randint(<span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">if</span> x == <span class="number">0</span>:</span><br><span class="line">        reverse_col_colors(pixels, random.randint(<span class="number">0</span>, height // <span class="number">10</span> - <span class="number">1</span>), height)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        reverse_row_colors(pixels, random.randint(<span class="number">0</span>, width // <span class="number">10</span> - <span class="number">1</span>), width)</span><br><span class="line">    count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">new_img.save(<span class="string">&quot;new.png&quot;</span>)</span><br></pre></td></tr></table></figure>
 
 <p>很明显的不符合格式的二维码，查看py文件可知，随机对7个行或列进行了黑白像素格反转。</p>
 <p>有两种解法：</p>
 <p>①根据二维码的格式，分析并手绘，扫一下就能得到flag。</p>
-<img src="2023-01-16_misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/erweimasaobuchu2.png" style="zoom: 50%;" />
+<img src="/2023/01/16/misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/erweimasaobuchu2.png" style="zoom: 50%;">
 
 <p>②修改利用所给的py文件爆破（但我个人认为这个效率不高？因为只能批量输出但是无法批量扫描。如果对二维码格式了解比较熟练的话，手绘的速度其实也不慢。【留存一下，日后来看】【已看】</p>
 <p>如果加以分析的话可以看出是哪几行几列反转了：</p>
-<img src="2023-01-16_misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/erweimasaobuchu3.png" style="zoom: 50%;" />
+<img src="/2023/01/16/misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/erweimasaobuchu3.png" style="zoom: 50%;">
 
 <p>修改一下附件中所给的代码，将计数和while循环删去，加入以下内容，即可得到原本的二维码。（记得修改导入的图片和输出的图片名</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">reverse_row_colors(pixels, <span class="number">1</span>, width)	<span class="comment">#从最小的x,y值开始计数，所以数字0为第一行/列。</span></span><br><span class="line">reverse_row_colors(pixels, <span class="number">12</span>, width)</span><br><span class="line"></span><br><span class="line">reverse_col_colors(pixels, <span class="number">0</span>, height)</span><br><span class="line">reverse_col_colors(pixels, <span class="number">2</span>, height)</span><br><span class="line">reverse_col_colors(pixels, <span class="number">5</span>, height)</span><br><span class="line">reverse_col_colors(pixels, <span class="number">10</span>, height)</span><br><span class="line">reverse_col_colors(pixels, <span class="number">11</span>, height)</span><br></pre></td></tr></table></figure>
