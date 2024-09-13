@@ -7,14 +7,14 @@
 <span id="more"></span>
 
 <p>这么好用的工具当然是先安装为强</p>
-<p><img src="/.com//Snipaste_2022-12-29_14-12-29.jpg"></p>
+<p><img src="/2022-12-29_%E7%94%B1zsteg%E8%A1%8D%E7%94%9F%E7%9A%84%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99%E6%8D%8F/Snipaste_2022-12-29_14-12-29.jpg"></p>
 <p>安装过程中发现查无此包，查阅资料才发现zsteg是kail上的工具，但由于我用的是Ubuntu，不是kail，需要先安装Ruby和RubyGems，再通过gem命令安装zsteg</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ruby-full rubygems</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem install zsteg</span><br></pre></td></tr></table></figure>
 
 <p>原本查阅资料，运行以上指令就可以了，但实际上会报错，我也不清楚是什么原因</p>
-<img src="/.com//Snipaste_2022-12-29_14-24-06.jpg" style="zoom:80%;">
+<img src="2022-12-29_%E7%94%B1zsteg%E8%A1%8D%E7%94%9F%E7%9A%84%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99%E6%8D%8F/Snipaste_2022-12-29_14-24-06.jpg" style="zoom:80%;" />
 
 <p>后来自己凭着经验改了一下指令，实际用到了以下指令才成功安装：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ruby</span><br></pre></td></tr></table></figure>
@@ -22,7 +22,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem install zsteg</span><br></pre></td></tr></table></figure>
 
 <p>然后就可以快乐的使用它啦！</p>
-<img src="/.com//Snipaste_2022-12-29_14-28-38.jpg" style="zoom:80%;">
+<img src="2022-12-29_%E7%94%B1zsteg%E8%A1%8D%E7%94%9F%E7%9A%84%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99%E6%8D%8F/Snipaste_2022-12-29_14-28-38.jpg" style="zoom:80%;" />
 
 <p><strong>更新：换了kali系统后学会了新的下载安装方式</strong></p>
 <p>进入github，找到zsteg作者的主页和项目（一般来说是搜出来的第一个</p>
@@ -40,12 +40,12 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zsteg pictrue_name.png/~.bmp    #一般来说使用这个指令就可以了 疑似隐藏数据会被优先筛选显示出来</span><br><span class="line">zsteg -a （文件名    #查看各个通道的lsb</span><br></pre></td></tr></table></figure>
 
 <p>以RCTF的ez_alient为例</p>
-<img src="/.com//Snipaste_2023-01-09_19-06-22.jpg" style="zoom:80%;">
+<img src="2022-12-29_%E7%94%B1zsteg%E8%A1%8D%E7%94%9F%E7%9A%84%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99%E6%8D%8F/Snipaste_2023-01-09_19-06-22.jpg" style="zoom:80%;" />
 
 <p>这样就可以很直观的看到图片里隐藏的数据</p>
 <p>（但我突发奇想，既然zsteg是查看lsb数据的工具，虽更简洁方便，能自己跳出隐藏信息数据，与我一直使用的stegsolve有何不同呢？</p>
 <p>于是我将alien.bmp放入stegsolve，通过查看zsteg的结果，发现隐藏的数据位置处于extradata:0，但在stegsolve的analys操作界面中没有找到对应的通道，将图片拖入010中发现zsteg查看到的隐藏数据其实就在文件尾端</p>
-<p><img src="/.com//Snipaste_2023-01-09_19-25-15.jpg"></p>
+<p><img src="/2022-12-29_%E7%94%B1zsteg%E8%A1%8D%E7%94%9F%E7%9A%84%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99%E6%8D%8F/Snipaste_2023-01-09_19-25-15.jpg"></p>
 <p>怀疑可能是因为该隐藏信息直接藏在文件尾端，不需要通过通道去读取，所以无法通过stegsolve选取通道去查看，但如果对于我这种对信息捕捉不敏感的人（意思是没有办法通过010捕捉到这个疑似隐写数据的信息的人）zsteg可以提供最简单粗暴的解决方式。</p>
 <p>– – – – – – – – 一条分割线 – – – – – – – –</p>
 <p>在做了几道关于lsb隐写的题后，发现相比zsteg来说，stegsolve查看不同通道的图片相对直观一些，而zsteg要相对笼统、智能一些</p>
@@ -73,7 +73,7 @@
 <p>按照学长给的教程~修改了_cinfig.yml文件中post_asset_folder的值为true就解决了一个md一个图片文件夹的需求，这样创建新post的时候就能自动生成与文章名相同的文件夹啦！学长威武捏！</p>
 <p>– – – – – – – – 还是一条分割线 – – – – – – – – </p>
 <p>对于博客显示图片这个设置，还是不太满意，经过大佬指点，认为修改图像偏好比较影响平时不写博客时使用typora的体验，深有同感，于是取消了复制图像的偏好和根目录设置，直接采用路径，但同步到本地博客后发现无法显示图片（又遇到了同样的难题</p>
-<p><img src="/.com//Snipaste_2023-01-09_20-39-49.jpg"></p>
+<p><img src="/2022-12-29_%E7%94%B1zsteg%E8%A1%8D%E7%94%9F%E7%9A%84%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99%E6%8D%8F/Snipaste_2023-01-09_20-39-49.jpg"></p>
 <p>仔细琢磨了一会，最后总结出来如果是使用hexo和github搭建的博客，一般来说有三种插入图片的方式：</p>
 <p>①封装文件夹</p>
 <p>②上传图片到git库</p>
@@ -84,7 +84,7 @@
 <p>师傅说这是hexo-asset-image插件代码的问题，需要找到博客下该插件的位置：</p>
 <p><code>node_modules\hexo-asset-image</code></p>
 <p>打开index.js，找到24行，修改代码为<code>var endPos = link.length-1;</code>就ok了</p>
-<p><img src="/.com//Snipaste_2023-01-12_20-47-12.jpg"></p>
+<p><img src="/2022-12-29_%E7%94%B1zsteg%E8%A1%8D%E7%94%9F%E7%9A%84%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99%E6%8D%8F/Snipaste_2023-01-12_20-47-12.jpg"></p>
 <p>然后更新一下博客就好啦~</p>
 <p>最后再次感谢这位师傅！解决了困扰我多日的问题！</p>
 </p></div><div class="post-footer"><div class="tip">本文采用CC-BY-SA-3.0协议，转载请注明出处<br>作者: 小猫卷饼</div><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2022-12-29</span><a class="tag" href="/categories/misc/" title="misc">misc </a><i class="fa fa-tag"></i><a class="tag" href="/tags/一些证明自己还活着的记录/" title="一些证明自己还活着的记录">一些证明自己还活着的记录 </a><span class="leancloud_visitors"></span><span>大约1926个字, 6分钟25秒读完</span></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="" onclick="javascript:join_favorite()" ref="sidebar"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/intent/tweet?text=%E5%88%86%E4%BA%AB%E6%96%87%E7%AB%A0%EF%BC%9A%0A%0A%E5%B0%8F%E7%8C%AB%E5%8D%B7%E9%A5%BC%20%C2%B7%20%E7%94%B1zsteg%E8%A1%8D%E7%94%9F%E7%9A%84%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99%E6%8D%8F%0Ahttp://example.com/2022/12/29/%E7%94%B1zsteg%E8%A1%8D%E7%94%9F%E7%9A%84%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99%E6%8D%8F/%0A"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/2023/01/02/CATCTF%E5%BF%AB%E4%B9%90%E7%AD%BE%E5%88%B0%E6%97%A5/" title="CATCTF快乐签到日">上一篇</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/2022/11/29/my-first-blog/" title="my_first_blog">下一篇</a></li></ul></div><script src="/js/visitors.js"></script></div></div></div></div><script src="/js/darkLightToggle.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/add-bookmark.js"></script><script>(function(window){var INSIGHT_CONFIG={TRANSLATION:{POSTS:"文章",PAGES:"页面",CATEGORIES:"分类",TAGS:"标签",UNTITLED:"(无标题)",},CONTENT_URL:"/content.json",};window.INSIGHT_CONFIG=INSIGHT_CONFIG})(window);</script><script src="/js/insight.js" defer></script><div class="searchbox ins-search"><div class="searchbox-container ins-search-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="想要查找什么..."><span class="searchbox-close"><a class="fa fa-times-circle" onclick="closeWindow();"></a></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"><p>Seraching...</p></div></div></div></div></body></html>

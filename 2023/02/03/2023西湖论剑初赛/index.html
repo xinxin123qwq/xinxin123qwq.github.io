@@ -17,27 +17,27 @@ mp3方向错了，一开始以为是频谱隐写，一直在倒腾au，后来仔
 
 <h1 id="misc"><a href="#misc" class="headerlink" title="misc"></a>misc</h1><h2 id="签到题喵"><a href="#签到题喵" class="headerlink" title="签到题喵"></a>签到题喵</h2><p>发现010直接套用模板真的很好用，对不同的数据块标注色块可以很直观的看到和分析出隐藏的数据</p>
 <p>然后就发现图片后面有一串多余的字符串啦~拿出来转换一下</p>
-<img src="/.com//qd1.jpg" style="zoom: 80%;">
+<img src="2023-02-03_2023%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91%E5%88%9D%E8%B5%9B/qd1.jpg" style="zoom: 80%;" />
 
-<img src="/.com//qd2.jpg" style="zoom: 50%;">
+<img src="2023-02-03_2023%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91%E5%88%9D%E8%B5%9B/qd2.jpg" style="zoom: 50%;" />
 
 <p>然后获得flag</p>
-<img src="/.com//qd3.jpg" style="zoom: 25%;">
+<img src="2023-02-03_2023%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91%E5%88%9D%E8%B5%9B/qd3.jpg" style="zoom: 25%;" />
 
 
 
 <h2 id="mp3"><a href="#mp3" class="headerlink" title="mp3"></a>mp3</h2><p>方向错了，一开始以为是频谱隐写，一直在倒腾au，后来仔细研究了文件名cihper（果然出题师傅给题目取这个名字一定有他的道理），Windows的确有个cipher.exe的工具，但是只是一个文件加密工具，用来管理资料系统的，然后按照惯例把能试的工具都试了一遍，发现foremost分离出一张图片</p>
-<p><img src="/.com//mp1.jpg"></p>
+<p><img src="/2023-02-03_2023%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91%E5%88%9D%E8%B5%9B/mp1.jpg"></p>
 <p>然后就是最熟悉的图片隐写环节。zsteg看出有个通道有zip文件，提取一下（不用管那个v2.0，一样可以提取</p>
-<img src="/.com//mp2.jpg" style="zoom:80%;">
+<img src="2023-02-03_2023%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91%E5%88%9D%E8%B5%9B/mp2.jpg" style="zoom:80%;" />
 
-<img src="/.com//mp3.jpg" style="zoom:80%;">
+<img src="2023-02-03_2023%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91%E5%88%9D%E8%B5%9B/mp3.jpg" style="zoom:80%;" />
 
-<img src="/.com//mp6.jpg" style="zoom: 67%;">
+<img src="2023-02-03_2023%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91%E5%88%9D%E8%B5%9B/mp6.jpg" style="zoom: 67%;" />
 
 <p>但发现解压需要密码，一般来说密码一定藏在mp3文件里（感觉没有出题者会把密码也塞在图片里</p>
 <p>这时候想到mp3隐写有个对口工具了，使用一下</p>
-<img src="/.com//mp4.jpg" style="zoom: 67%;">
+<img src="2023-02-03_2023%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91%E5%88%9D%E8%B5%9B/mp4.jpg" style="zoom: 67%;" />
 
 <p>– – – – – – – – 一条分割线 – – – – – – – – </p>
 <p>mp3stego采用一种特殊的量化方法， 并将数据隐藏在MP3文件的奇偶校验块中。MP3编码器将wav文件和一个要隐藏的载荷文件作为输入， 生成一个新的mp3文件。 这种方法最显著的局限性在于载荷文件不能太大。 例如， 一个6MB的全频谱波形音频文件最多只能嵌入6KB的信息， 嵌入率约为0.1%。</p>
@@ -52,44 +52,44 @@ mp3方向错了，一开始以为是频谱隐写，一直在倒腾au，后来仔
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-X          提取隐藏数据</span><br><span class="line">-E          加密隐藏数据</span><br><span class="line">-P &lt;text&gt;   用密码用于嵌入</span><br><span class="line">-A          编写AIFF输出PCM声音文件</span><br><span class="line">-s &lt;sb&gt;     仅在此SB（仅调试）</span><br><span class="line">inputBS     编码音频的输入位</span><br><span class="line">outPCM      输出PCM声音文件（DFLT输入+.AIF | .pcm）</span><br><span class="line">outhidden   输出隐藏的文本文件（dflt inputbs+.txt）</span><br></pre></td></tr></table></figure>
 <p>当然每个人的使用环境和情况都不同，指令可以视情况而自主改变</p>
 <p>– – – – – – – – 本分割线用于回到正文 – – – – – – – – </p>
-<img src="/.com//mp5.jpg" style="zoom:67%;">
+<img src="2023-02-03_2023%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91%E5%88%9D%E8%B5%9B/mp5.jpg" style="zoom:67%;" />
 
 <p>拿到这一串，应该就是压缩包密码了（好险，这要是暴力破解得跑到什么时候</p>
-<img src="/.com//mp7.jpg" alt="mp7" style="zoom:67%;">
+<img src="2023-02-03_2023%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91%E5%88%9D%E8%B5%9B/mp7.jpg" alt="mp7" style="zoom:67%;" />
 
 <p>解压得到这么一串，感觉没什么头绪，mp3文件名意为密码，应该需要解码，但加密方式那么多，到底是哪个</p>
 <p>在工具中搜索47发现有个rot47匹配，解密出来也是一大串（文件名真的很重要！！出题师傅给这个文件取这个名字一定有他的理由！！！</p>
-<img src="/.com//mp8.jpg" style="zoom:50%;">
+<img src="2023-02-03_2023%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91%E5%88%9D%E8%B5%9B/mp8.jpg" style="zoom:50%;" />
 
 <p>同队大佬提醒这个很像某脚本或者命令（难道是因为后面有分号吗</p>
 <p>在各种编程软件和命令行里run一下，最后在控制台得出结果</p>
-<img src="/.com//mp9.jpg" style="zoom: 50%;">
+<img src="2023-02-03_2023%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91%E5%88%9D%E8%B5%9B/mp9.jpg" style="zoom: 50%;" />
 
 <h2 id="take-the-zip-easy"><a href="#take-the-zip-easy" class="headerlink" title="take_the_zip_easy"></a>take_the_zip_easy</h2><p>（明文攻击、、没想到会以这样的方式见面</p>
 <p>初步查看发现压缩包是加密的，压缩包内有一个和流量包名字相同的压缩包</p>
-<img src="/.com//zip1.jpg" style="zoom:67%;">
+<img src="2023-02-03_2023%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91%E5%88%9D%E8%B5%9B/zip1.jpg" style="zoom:67%;" />
 
 <p>确定是明文攻击，上工具</p>
-<img src="/.com//zip2.jpg" style="zoom: 67%;">
+<img src="2023-02-03_2023%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91%E5%88%9D%E8%B5%9B/zip2.jpg" style="zoom: 67%;" />
 
 <p>然后用密钥把文件取出来</p>
-<img src="/.com//zip3.jpg" style="zoom:67%;">
+<img src="2023-02-03_2023%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91%E5%88%9D%E8%B5%9B/zip3.jpg" style="zoom:67%;" />
 
 <p>检查发现http中含有post请求，筛选一下发现对upload有上传文件操作，把文件提取出来</p>
-<img src="/.com//zip4.jpg" style="zoom:50%;">
+<img src="2023-02-03_2023%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91%E5%88%9D%E8%B5%9B/zip4.jpg" style="zoom:50%;" />
 
-<img src="/.com//zip5.jpg" style="zoom: 33%;">
+<img src="2023-02-03_2023%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91%E5%88%9D%E8%B5%9B/zip5.jpg" style="zoom: 33%;" />
 
 <p>发现有个瞩目的zip文件，结合题目名称，此压缩文件内含flag，但压缩包是加密的</p>
-<img src="/.com//zip6.jpg" style="zoom: 67%;">
+<img src="2023-02-03_2023%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91%E5%88%9D%E8%B5%9B/zip6.jpg" style="zoom: 67%;" />
 
 <p>尝试了各种压缩包解密，都行不通，检查流量包的时候发现有冰蝎和哥斯拉流量的弱标志，逐一仔细检查发现是哥斯拉流量加密</p>
-<img src="/.com//zip7.jpg" style="zoom:67%;">
+<img src="2023-02-03_2023%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91%E5%88%9D%E8%B5%9B/zip7.jpg" style="zoom:67%;" />
 
-<img src="/.com//zip8.jpg" style="zoom:67%;">
+<img src="2023-02-03_2023%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91%E5%88%9D%E8%B5%9B/zip8.jpg" style="zoom:67%;" />
 
 <p>用脚本解密一下</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">encode</span>(<span class="params"><span class="variable">$D</span>,<span class="variable">$K</span></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="variable">$i</span>=<span class="number">0</span>;<span class="variable">$i</span>&lt;<span class="title function_ invoke__">strlen</span>(<span class="variable">$D</span>);<span class="variable">$i</span>++)&#123;</span><br><span class="line">        <span class="variable">$c</span> = <span class="variable">$K</span>[<span class="variable">$i</span>+<span class="number">1</span>&amp;<span class="number">15</span>];</span><br><span class="line">        <span class="variable">$D</span>[<span class="variable">$i</span>] = <span class="variable">$D</span>[<span class="variable">$i</span>]^<span class="variable">$c</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$D</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$pass</span>=<span class="string">&#x27;air123&#x27;</span>;</span><br><span class="line"><span class="variable">$payloadName</span>=<span class="string">&#x27;payload&#x27;</span>;</span><br><span class="line"><span class="variable">$key</span>=<span class="string">&#x27;d8ea7326e6ec5916&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">encode</span>(<span class="title function_ invoke__">base64_decode</span>(<span class="title function_ invoke__">urldecode</span>(<span class="string">&#x27;J%2B5pNzMyNmU2mij7dMD%2FqHMAa1dTUh6rZrUuY2l7eDVot058H%2BAZShmyrB3w%2FOdLFa2oeH%2FjYdeYr09l6fxhLPMsLeAwg8MkGmC%2BNbz1%2BkYvogF0EFH1p%2FKFEzIcNBVfDaa946G%2BynGJob9hH1%2BWlZFwyP79y4%2FcvxxKNVw8xP1OZWE3&#x27;</span>)),<span class="variable">$key</span>);</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>得到压缩包密码airDAS1231qaSW@，解压一下拿到flag，使用记事本打开就能拿到结果了捏</p>
-<img src="/.com//zip9.jpg" style="zoom:67%;"></p></div><div class="post-footer"><div class="tip">本文采用CC-BY-SA-3.0协议，转载请注明出处<br>作者: 小猫卷饼</div><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2023-02-03</span><a class="tag" href="/categories/misc/" title="misc">misc </a><i class="fa fa-tag"></i><a class="tag" href="/tags/games/" title="games">games </a><span class="leancloud_visitors"></span><span>大约1244个字, 4分钟8秒读完</span></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="" onclick="javascript:join_favorite()" ref="sidebar"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/intent/tweet?text=%E5%88%86%E4%BA%AB%E6%96%87%E7%AB%A0%EF%BC%9A%0A%0A%E5%B0%8F%E7%8C%AB%E5%8D%B7%E9%A5%BC%20%C2%B7%202023%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91%E5%88%9D%E8%B5%9B%0Ahttp://example.com/2023/02/03/2023%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91%E5%88%9D%E8%B5%9B/%0A"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/2023/07/03/%E6%9A%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" title="暑期学习记录">上一篇</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/2023/01/16/misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" title="misc刷题笔记">下一篇</a></li></ul></div><script src="/js/visitors.js"></script></div></div></div></div><script src="/js/darkLightToggle.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/add-bookmark.js"></script><script>(function(window){var INSIGHT_CONFIG={TRANSLATION:{POSTS:"文章",PAGES:"页面",CATEGORIES:"分类",TAGS:"标签",UNTITLED:"(无标题)",},CONTENT_URL:"/content.json",};window.INSIGHT_CONFIG=INSIGHT_CONFIG})(window);</script><script src="/js/insight.js" defer></script><div class="searchbox ins-search"><div class="searchbox-container ins-search-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="想要查找什么..."><span class="searchbox-close"><a class="fa fa-times-circle" onclick="closeWindow();"></a></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"><p>Seraching...</p></div></div></div></div></body></html>
+<img src="2023-02-03_2023%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91%E5%88%9D%E8%B5%9B/zip9.jpg" style="zoom:67%;" /></p></div><div class="post-footer"><div class="tip">本文采用CC-BY-SA-3.0协议，转载请注明出处<br>作者: 小猫卷饼</div><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2023-02-03</span><a class="tag" href="/categories/misc/" title="misc">misc </a><i class="fa fa-tag"></i><a class="tag" href="/tags/games/" title="games">games </a><span class="leancloud_visitors"></span><span>大约1244个字, 4分钟8秒读完</span></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="" onclick="javascript:join_favorite()" ref="sidebar"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/intent/tweet?text=%E5%88%86%E4%BA%AB%E6%96%87%E7%AB%A0%EF%BC%9A%0A%0A%E5%B0%8F%E7%8C%AB%E5%8D%B7%E9%A5%BC%20%C2%B7%202023%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91%E5%88%9D%E8%B5%9B%0Ahttp://example.com/2023/02/03/2023%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91%E5%88%9D%E8%B5%9B/%0A"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/2023/07/03/%E6%9A%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" title="暑期学习记录">上一篇</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/2023/01/16/misc%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" title="misc刷题笔记">下一篇</a></li></ul></div><script src="/js/visitors.js"></script></div></div></div></div><script src="/js/darkLightToggle.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/add-bookmark.js"></script><script>(function(window){var INSIGHT_CONFIG={TRANSLATION:{POSTS:"文章",PAGES:"页面",CATEGORIES:"分类",TAGS:"标签",UNTITLED:"(无标题)",},CONTENT_URL:"/content.json",};window.INSIGHT_CONFIG=INSIGHT_CONFIG})(window);</script><script src="/js/insight.js" defer></script><div class="searchbox ins-search"><div class="searchbox-container ins-search-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="想要查找什么..."><span class="searchbox-close"><a class="fa fa-times-circle" onclick="closeWindow();"></a></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"><p>Seraching...</p></div></div></div></div></body></html>
