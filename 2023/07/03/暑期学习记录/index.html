@@ -116,7 +116,7 @@
 <p><strong>4.访问特定的加密解密网站（md5，base64）</strong></p>
 <p><strong>5.后台扫描+弱密码爆破+菜刀</strong></p>
 <p>以buuctf的菜刀666为例，打开附件发现很多TCP包</p>
-<img src="2023-07-03_%E6%9A%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/caidao1.png" style="zoom: 50%;" />
+<img src="/.com//caidao1.png" style="zoom: 50%;">
 
 <p>过滤POST的包</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http.request.method==POST</span><br></pre></td></tr></table></figure>
@@ -130,11 +130,11 @@
 <p>具体来分析，和UDP相比，TCP有三大核心特性：</p>
 <p><em>1.面向连接。</em></p>
 <p>所谓的连接，指的是客户端和服务器的连接，在双方互相通信之前，TCP需要三次握手建立连接，而UDP没有相应建立连接的过程。</p>
-<img src="2023-07-03_%E6%9A%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/tcp1.png" style="zoom:60%;" />
+<img src="/.com//tcp1.png" style="zoom:60%;">
 
 <p>另外，从图中可以看出，SYN是需要消耗一个序列号的，下次发送对应的ACK序列号要加1，为什么呢？只需要记住一个规则：<u>凡是需要对端确认的，一定消耗TCP报文的序列号。</u></p>
 <p>SYN需要对端的确认，而ACK并不需要，因此SYN消耗一个序列号而ACK不需要。</p>
-<img src="2023-07-03_%E6%9A%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/tcp2.png" style="zoom:60%;" />
+<img src="/.com//tcp2.png" style="zoom:60%;">
 
 
 

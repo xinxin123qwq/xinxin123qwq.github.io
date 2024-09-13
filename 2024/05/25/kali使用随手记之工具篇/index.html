@@ -11,20 +11,20 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg-reconfigure locales	//切换语言</span><br></pre></td></tr></table></figure>
 
 <p>关于配网，我图省事，配的是桥接模式、dhcp。</p>
-<img src="2024-05-25_kali%E4%BD%BF%E7%94%A8%E9%9A%8F%E6%89%8B%E8%AE%B0%E4%B9%8B%E5%B7%A5%E5%85%B7%E7%AF%87/eth0_1.jpg" style="zoom: 50%;" />
+<img src="/.com//eth0_1.jpg" style="zoom: 50%;">
 
 <p>本来应该再配置一下DNS，文件路径为&#x2F;etc&#x2F;resolv.conf（114.114.114.114中国电信运营的公共DNS服务器，通常用于在中国地区访问互联网。8.8.8.8Google运营的公共DNS服务器，通常用于全球范围内的互联网访问。）</p>
 <p>但我写入后重启网络服务（命令：systemctl restart networking）后会被覆盖（(╬￣皿￣)不管了，能上网就行</p>
 <p>另外，校园网我恨你，一直获取不到ip，切了热点之后马上就嘎嘎跑。（还没试过校园宽带，埋个种子꒰ᐢ⸝⸝•༝•⸝⸝ᐢ꒱回去试）（这是什么？种子？拔掉get！٩( ‘ω’ )و）校园宽带可以获取ip，但是上网的时候会弹出校园宽带专属的认证界面，由于我只有一个校园网账号，主机已经online了，虚拟机无法同时online。</p>
 <p>思前想后还是决定配回NAT模式，还是图省事套的dhcp，对应的网卡配置文件内容为：</p>
-<img src="2024-05-25_kali%E4%BD%BF%E7%94%A8%E9%9A%8F%E6%89%8B%E8%AE%B0%E4%B9%8B%E5%B7%A5%E5%85%B7%E7%AF%87/eth0_2.jpg" style="zoom: 80%;" />
+<img src="/.com//eth0_2.jpg" style="zoom: 80%;">
 
 <p>那个DNS配置文件不用管，会自己跟着变：</p>
-<img src="2024-05-25_kali%E4%BD%BF%E7%94%A8%E9%9A%8F%E6%89%8B%E8%AE%B0%E4%B9%8B%E5%B7%A5%E5%85%B7%E7%AF%87/eth0_3.jpg" style="zoom:80%;" />
+<img src="/.com//eth0_3.jpg" style="zoom:80%;">
 
 <p>WIN+R后，输入appwiz.cpl打开程序应用管理界面，输入services.msc打开服务管理。</p>
 <p>Xshell无法连接kali：</p>
-<p><img src="/2024-05-25_kali%E4%BD%BF%E7%94%A8%E9%9A%8F%E6%89%8B%E8%AE%B0%E4%B9%8B%E5%B7%A5%E5%85%B7%E7%AF%87/ssh1.jpg"></p>
+<p><img src="/.com//ssh1.jpg"></p>
 <p>Kali Linux默认没有打开ssh远程登录，在kali中找到配置文件，将其打开即可。（ssh就是一种网络协议，用于加密的远程登录，所以在没有打开ssh协议之前是无法使用Xshell连接Kali Linux）</p>
 <p>Kali Linux开启ssh，允许root用户远程登录，由于我的机器只是用于熟悉操作，所以此处我并没有设置开机自启动ssh，想要远程登录还需手动开启ssh才能远程登录。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br><span class="line">PasswordAuthentication yes	//启用了密码认证，允许用户通过输入用户名和密码来进行远程登录。</span><br><span class="line">修改PermitRootLogin without-password -&gt; PermitRootLogin yes	//允许root用户直接通过ssh登录.</span><br><span class="line">/etc/init.d/ssh start</span><br><span class="line">service ssh start	//这两条都可以用来启动ssh服务。</span><br><span class="line">/etc/init.d/ssh status	//查看ssh服务状态是否正常运行</span><br></pre></td></tr></table></figure>
@@ -40,7 +40,7 @@
 <li>min-len指crunch要开始的最小长度字符串。即使不使用参数的值，也需要此选项。</li>
 <li>max-len指crunch要开始的最大长度字符串。同上。</li>
 </ul>
-<p>在生成密码字典时，最常使用的[<charset string>]是-t @,%^，用于指定模式，@,%^分别代表意义如下：</p>
+<p>在生成密码字典时，最常使用的[<charset string>]是-t @,%^，用于指定模式，@,%^分别代表意义如下：</charset></p>
 <ul>
 <li>@ 插入小写字母</li>
 <li>, 插入大写字母</li>
