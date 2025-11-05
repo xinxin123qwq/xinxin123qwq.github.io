@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2025-09-15T07:58:03.000Z</updated>
+  <updated>2025-10-21T13:00:17.000Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>eNSP无法启动排障小记</title>
+    <link href="http://example.com/2025/10/21/eNSP%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E6%8E%92%E9%9A%9C%E5%B0%8F%E8%AE%B0/"/>
+    <id>http://example.com/2025/10/21/eNSP无法启动排障小记/</id>
+    <published>2025-10-21T13:00:17.000Z</published>
+    <updated>2025-10-21T13:00:17.000Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>想用eNSP，在网上翻了安装包，装上去不能用，翻出去年老师发的安装包，还是不行，怒，遂记。</p><span id="more"></span><p><strong>课代表：关键操作为修改注册表+使用eNSP自带脚本卸载重装其本身。</strong></p><p><strong>排查逻辑</strong>：遵循从<strong>系统底层（Hyper-V）</strong>—&gt; <strong>中间层（VirtualBox）</strong> —&gt;<strong>应用层（eNSP）</strong> 的次序，由深至浅地排查，效率最高。</p><p>过程：设备不能启动（错误代码40）</p><p>—&gt; VirtualBox内虚拟机无法正常启动</p><p>（不能为虚拟电脑 AR_Base 打开一个新任务.<br>Raw-mode is unavailable courtesy of Hyper-V. (VERR_SUPDRV_NO_RAW_MODE_HYPER_V_ROOT).<br>返回 代码: E_FAIL (0x80004005)<br>组件: ConsoleWrap<br>界面: IConsole {872da645-4a9b-1727-bee2-5585105b9eed}</p><p>—&gt; 在BIOS中关闭虚拟化</p><p>—&gt; 蓝屏了（CLOCK_WATCHDOG_TIMEOUT）</p><p>—&gt; 重装eNSP、VirtualBox</p><p>—&gt; 还是不行</p><p>同样的安装和配置，在另一台电脑里可以正常运行，对比了两台电脑的系统信息，发现主要原因还是<strong>Windows 11 系统底层默认启用的 Hyper-V 虚拟化平台</strong> 与 <strong>VirtualBox 需要的“原始模式(Raw-mode)”</strong> 不兼容。</p><p>发现关键点：<code>bcdedit</code>输出内容中没有<code>hypervisorlaunchtype</code></p><p>① 查看已启用的Windows功能</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dism /online /get-features /<span class="built_in">format</span>:table | <span class="built_in">findstr</span> /I &quot;Hyper-V&quot;</span><br></pre></td></tr></table></figure><p>② 检查核心隔离：</p><ol><li>设置 → 隐私和安全性 → Windows 安全中心</li><li>设备安全性 → 核心隔离</li><li>确保 “内存完整性” 是关闭状态</li></ol><p>③ 检查 WSL 状态</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl --status</span><br></pre></td></tr></table></figure><p>④ 由于没有 <code>hypervisorlaunchtype</code>，手动添加禁用配置</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bcdedit /<span class="built_in">set</span> hypervisorlaunchtype off</span><br></pre></td></tr></table></figure><p><strong>重启</strong>后发现冲突未解决</p><p>⑤ 检查服务状态</p><p>如果显示运行中，停止并禁用：</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sc stop vmms</span><br><span class="line">sc config vmms <span class="built_in">start</span>= disabled</span><br></pre></td></tr></table></figure><p>还是不行！！！</p><p><strong>⑥ 最后的关键操作是更改注册表（操作注册表前记得备份）</strong></p><p><strong>删除<code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard</code>文件夹，然后重启</strong>，检查Hyper-V状态：</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systeminfo | <span class="built_in">findstr</span> /I &quot;Hyper-V&quot;</span><br></pre></td></tr></table></figure><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">C:\<span class="title">Users</span>\<span class="title">Administrator</span>&gt;<span class="title">systeminfo</span> | <span class="title">findstr</span> /<span class="title">I</span> &quot;<span class="title">Hyper</span>-<span class="title">V</span>&quot;</span></span><br><span class="line"><span class="function"><span class="title">Hyper</span>-<span class="title">V</span> 要求:     虚拟机监视器模式扩展: 是</span></span><br></pre></td></tr></table></figure><p>谢天谢地、、</p><p>VirtualBox是没问题了，虚拟机（其实也是eNSP中注册的设备）在VirtualBox里可以正常启动，但是eNSP中启动设备还是报错（错误代码40）</p><ol><li><p>重新注册eNSP设备</p></li><li><p>检查VirtualBox虚拟网卡 “VirtualBox Host-Only Ethernet Adapter”  </p><p>IP地址： <code>192.168.56.1</code></p><p>子网掩码： <code>255.255.255.0</code>。</p><p>同时，取消勾选”DHCP服务器”页签中的”启用服务器”。</p></li><li><p>调整AR_Base虚拟机的显存设置<br>eNSP的安装目录下（默认为 <code>C:\Program Files\Huawei\eNSP</code>），进入 <code>\VBoxServer\ARBaseBackup\AR_Base\</code> 文件夹，打开 <code>AR_Base.vbox</code> 文件，找到 <code>&lt;Display VRAMSize=&quot;1&quot;&gt;</code> 这一行，将数字 “1” 修改为一个更大的值，例如 “9” 。</p><p>保存文件后，重启eNSP并重新注册设备。</p></li><li><p><strong>关键操作：卸载重装eNSP</strong></p><p>找到 eNSP 的安装目录（默认为 <code>C:\Program Files\Huawei\eNSP</code>），运行该目录下的 <strong><code>Uninstall.bat</code></strong> 或 <code>cleanup.bat</code> 脚本<strong>（以管理员身份运行）</strong>。</p></li></ol><p>至此为止eNSP终于可以正常启动设备了、、（舍不得关机，怕第二天起来又不行了）</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;想用eNSP，在网上翻了安装包，装上去不能用，翻出去年老师发的安装包，还是不行，怒，遂记。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="一些证明自己还活着的记录" scheme="http://example.com/tags/%E4%B8%80%E4%BA%9B%E8%AF%81%E6%98%8E%E8%87%AA%E5%B7%B1%E8%BF%98%E6%B4%BB%E7%9D%80%E7%9A%84%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
   
   <entry>
     <title>小米路由器DNS劫持问题的解决方法</title>
